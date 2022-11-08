@@ -13,8 +13,12 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+
       appBar: AppBar(
-        actions: [Stack()],
+        elevation: 0,
+        backgroundColor: Colors.white,
+        // actions: [Stack()],
       ),
       body: SingleChildScrollView(
         child: Container(
