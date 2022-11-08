@@ -32,6 +32,52 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #  Package to build Material Form with fields like TextField, DropDown, Switches etc.
+  #  with ability to create custom FormFields and composability and reuse validation functions.
+  #  This package provides common reusable FormFieldValidators for Flutter FormField shared with internationalization
+  flutter_form_builder: 7.0.0
+
+  #  Contains code to deal with internationalized/localized messages,
+  #  date and number formatting and parsing, bi-directional text, and other internationalization issues.
+  intl: ^0.17.0
+
+  hooks_riverpod: ^1.0.3
+
+  #  A flexible widget for user notification.
+  #  Customize your text, button, duration, animations and much more.
+  #  For Android devs, it is made to replace Snackbars and Toasts.
+  another_flushbar: ^1.10.28
+
+  #  Toast Library for Flutter, Easily create toast messages in single line of code
+  fluttertoast: ^8.0.8
+
+  #  Flutter plugin for launching a URL on Android and iOS. Supports web, phone, SMS, and email schemes.
+  url_launcher: ^6.0.18
+
+  lottie: ^1.2.1 #Render After Effects animations natively on Flutter. This package is a pure Dart implementation of a Lottie player.
+
+  auto_route:
+
+  line_awesome_flutter: ^2.0.0   #The Line Awesome Icons pack for flutter. Provides 1542 additional icons to use in your apps.
+
+  #  Flutter plugin providing detailed information about the device (make, model, etc.), and Android or iOS version the app is running on.
+  device_info: ^2.0.3
+
+  #  Flutter Secure Storage provides API to store data in secure storage. Keychain is used in iOS, KeyStore based solution is used in Android.
+  flutter_secure_storage:
+
+  #  Sentry SDK for Flutter. This package aims to support different Flutter targets by relying on the many platforms supported by Sentry with native SDKs.
+  sentry_flutter: ^6.2.2
+
+  #  Vector design and runtime animation for Flutter.
+  flare_flutter: ^3.0.2
+
+  #  An SVG rendering and widget library for Flutter, which allows painting
+  #  and displaying Scalable Vector Graphics 1.1 files.
+  flutter_svg: any
+
+  #  library to load and cache network images. Can also be used with placeholder and error shared.
+  cached_network_image: ^3.2.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
