@@ -1,6 +1,7 @@
 class UIAssets {
   //image directory
   static const imageDir = "assets/images/";
+  static const allTravelPortalImagePlaceHolder = "${imageDir}travelPortal_placeholder.png";
 
 //app launcher and splash icons
   static const appLogo = "${imageDir}app_logo.png";
@@ -49,9 +50,10 @@ class UIAssets {
   static const emptyViewAnim = "${animationDir}empty_view.flr";
   static const liquidLoading = "liquid_loader.flr";
 
-  //gif images
+  //gif images / gif loading
   static const gifDir = "assets/gif/";
   static const gifLoading = "${gifDir}loading.gif";
+  static const shimmerEffectGif = "${gifDir}loading.gif";
 
   //helper methods
   static String getImage(String imageName) {

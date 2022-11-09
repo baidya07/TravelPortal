@@ -111,6 +111,8 @@ flutter:
     - assets/images/dummy_images/
     - assets/svg/
     - assets/.env
+    - assets/icons/
+    - assets/gif/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
