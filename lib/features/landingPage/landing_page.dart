@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
+import 'package:travelportal/core/presentation/widget/forms/textfields.dart';
 
 import '../../core/presentation/resources/size_constants.dart';
 import '../../core/presentation/resources/ui_assets.dart';
@@ -13,86 +14,191 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        // actions: [Stack()],
-      ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: SC.mW, vertical: SC.mH),
-                margin: const EdgeInsets.symmetric(
-                    horizontal: SC.mW, vertical: SC.mH),
-                decoration: BoxDecoration(
-                  border: Border.all(width: 0.1),
-                  borderRadius: BorderRadius.circular(15.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Stack(children: [
+              Image(
+                image: AssetImage(UIAssets.getDummyImage('bgimage.png')),
+              ),
+              AppBar(
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+                centerTitle: true,
+                title: Text(
+                  "Trip",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(color: Colors.white),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        _BookingServices(
-                          imageTitle: 'flight.svg',
-                          title: 'Flight',
-                        ),
-                        _BookingServices(
-                          imageTitle: 'car.svg',
-                          title: 'Transport',
-                        ),
-                        _BookingServices(
-                          imageTitle: 'hotel.svg',
-                          title: 'Hotel',
-                        ),
-                        _BookingServices(
-                          imageTitle: 'events.svg',
-                          title: 'Events',
-                        )
-                      ],
-                    ),
-                    //Icon(Icons.circle),
-                    // ImageSlider(
-                    //   dotPosition: DotPosition.bottomCenter,
-                    //   dotVerticalPadding: -15,
-                    //   dotSize: 5,
-                    //   images: [
-                    //
-                    //   ],
-                    // ),
-                    SBC.lH,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Best Vacation Destinations', style: Theme.of(context).textTheme.bodyText1,),
-                        Text('View all', style: Theme.of(context).textTheme.bodyText2!.copyWith(color: const Color(0xffF46817)),)
-                      ],
-                    ),
-                    const Divider(
-                      indent: 0.1,
-                    ),
-                    Text('Popular places near you', style: Theme.of(context).textTheme.bodyText1,),
-                    ListView.builder(
-                      itemCount: 3,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index){
-                      return _PopularPlaces();
-                    },),
-
-                    SBC.lH,
-                    PrimaryButton(onPressed: (_){}, title: 'Explore More', color: const Color(0xff3731EB),),
-                  ],
+                leading: IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(UIAssets.getSvg('ham.svg')),
+                ),
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(UIAssets.getSvg('notification.svg')),
+                  ),
+                ],
+              ),
+              Positioned(
+                top: 200,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: SC.mW),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Rediscover Yourself',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline5!
+                            .copyWith(color: Colors.white),
+                      ),
+                      Text(
+                        'Redisc self',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(color: Colors.white),
+                      ),
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width / 1.1,
+                          child: PrimaryTextField(
+                            fillColor: Colors.white,
+                            onSaved: (_) {},
+                            hintTxt: 'Where to ?',
+                            suffixIcon: Icon(Icons.search),
+                          ))
+                    ],
+                  ),
                 ),
               ),
-            ],
-          ),
+            ]),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: SC.mW, vertical: SC.mH),
+              decoration: BoxDecoration(
+                border: Border.all(width: 0.1),
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      _BookingServices(
+                        imageTitle: 'flight.svg',
+                        title: 'Flight',
+                      ),
+                      _BookingServices(
+                        imageTitle: 'car.svg',
+                        title: 'Transport',
+                      ),
+                      _BookingServices(
+                        imageTitle: 'hotel.svg',
+                        title: 'Hotel',
+                      ),
+                      _BookingServices(
+                        imageTitle: 'events.svg',
+                        title: 'Events',
+                      )
+                    ],
+                  ),
+                  //Icon(Icons.circle),
+                  // ImageSlider(
+                  //   dotPosition: DotPosition.bottomCenter,
+                  //   dotVerticalPadding: -15,
+                  //   dotSize: 5,
+                  //   images: [
+                  //
+                  //   ],
+                  // ),
+                  SBC.lH,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Best Vacation Destinations',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      Text(
+                        'View all',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2!
+                            .copyWith(color: const Color(0xffF46817)),
+                      )
+                    ],
+                  ),
+                  SBC.lH,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(children: [
+                        Container(
+                          width: 150,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 0.1,
+                            ),
+                            image: const DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(
+                                "https://img.atlasobscura.com/E4TAgOMK1AzcL75mAoDIqpKvskhyDGanjzoS6B9bglc/rs:fill:580:580:1/g:ce/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy85Zjkw/MzEyMzEyOGQ4YTdi/ODZfSW5uWmEgMjAx/MyA1ODU1IHN0YWFu/ZC5qcGc.jpg",
+                              ),
+                            ),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        Positioned(
+                          left: 125,
+                          child: const Icon(Icons.bookmark_border_sharp,
+                              color: Colors.white, size: 20),
+                        ),
+                      ]),
+                      Text(
+                        "data",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      SBC.sH,
+                      Text(
+                        "Iorem Ipsum",
+                        style: Theme.of(context).textTheme.bodyText2,
+                      ),
+                    ],
+                  ),
+                  const Divider(
+                    indent: 0.1,
+                  ),
+                  Text(
+                    'Popular places near you',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: 3,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return const _PopularPlaces();
+                    },
+                  ),
+
+                  SBC.lH,
+                  PrimaryButton(
+                    onPressed: (_) {},
+                    title: 'Explore More',
+                    color: const Color(0xff3731EB),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -112,13 +218,11 @@ class _PopularPlaces extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            border: Border.all(
-              width: 0.1
-            ),
+            border: Border.all(width: 0.1),
           ),
           child: CustomCachedNetworkImage(
-              'https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg',
-              fit: BoxFit.cover,
+            'https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg',
+            fit: BoxFit.cover,
             aspectRatio: 2.1,
           ),
         ),
@@ -127,27 +231,49 @@ class _PopularPlaces extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: SC.mW, vertical: SC.mH),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 0.1,
                 ),
                 borderRadius: BorderRadius.circular(22.0),
               ),
-              child: Text('Featured', style: Theme.of(context).textTheme.bodyText2!.copyWith(color: const Color(0xffF46817)),),
+              child: Text(
+                'Featured',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2!
+                    .copyWith(color: const Color(0xffF46817)),
+              ),
             ),
-            Text('\$180.00', style: Theme.of(context).textTheme.caption!.copyWith(decoration: TextDecoration.lineThrough), ),
+            Text(
+              '\$180.00',
+              style: Theme.of(context)
+                  .textTheme
+                  .caption!
+                  .copyWith(decoration: TextDecoration.lineThrough),
+            ),
           ],
         ),
         SBC.sH,
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Harmony Boutique Hotel', style: Theme.of(context).textTheme.bodyText1,),
-            Text('\$120.00', style: Theme.of(context).textTheme.bodyText1,)
+            Text(
+              'Harmony Boutique Hotel',
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            Text(
+              '\$120.00',
+              style: Theme.of(context).textTheme.bodyText1,
+            )
           ],
         ),
-        Text('kjasd aijhdbiad aisdbajsbd', style: Theme.of(context).textTheme.bodyText2,),
+        Text(
+          'kjasd aijhdbiad aisdbajsbd',
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
         SBC.xxLH,
       ],
     );
@@ -178,3 +304,10 @@ class _BookingServices extends StatelessWidget {
     );
   }
 }
+
+//@getRequest
+// {
+//       "image": "",
+//       "title": "",
+//       "description": ""
+// }
