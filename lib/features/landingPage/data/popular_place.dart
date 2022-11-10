@@ -33,3 +33,15 @@ class PopularPlaces{
     'amount': amount
   };
 }
+
+
+  /* test api
+{
+  "id": "1",
+  "image": "",
+  "title": "",
+  "description": "",
+  "isFeatured": "true/false",
+  "amount": ""
+}
+    */

@@ -37,6 +37,8 @@ dependencies:
   #  This package provides common reusable FormFieldValidators for Flutter FormField shared with internationalization
   flutter_form_builder: 7.0.0
 
+  dio: ^4.0.0
+
   #  Contains code to deal with internationalized/localized messages,
   #  date and number formatting and parsing, bi-directional text, and other internationalization issues.
   intl: ^0.17.0

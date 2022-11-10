@@ -4,8 +4,8 @@ import 'package:travelportal/core/presentation/widget/cached_network_image_build
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 import 'package:travelportal/core/presentation/widget/forms/textfields.dart';
 
-import '../../core/presentation/resources/size_constants.dart';
-import '../../core/presentation/resources/ui_assets.dart';
+import '../../../core/presentation/resources/size_constants.dart';
+import '../../../core/presentation/resources/ui_assets.dart';
 //import '../../core/presentation/widget/image_slider/image_slider.dart';
 
 class LandingPage extends StatelessWidget {
@@ -66,12 +66,16 @@ class LandingPage extends StatelessWidget {
                             .copyWith(color: Colors.white),
                       ),
                       SizedBox(
-                          width: MediaQuery.of(context).size.width / 1.1,
-                          child: PrimaryTextField(
-                            fillColor: Colors.white,
-                            onSaved: (_) {},
-                            hintTxt: 'Where to ?',
-                            suffixIcon: Icon(Icons.search),
+                          width: MediaQuery.of(context).size.width / 1.09,
+                          child: Opacity(
+                            opacity: 0.9,
+                            child: PrimaryTextField(
+                              fillColor: const Color(0xffE5E5E5),
+                              onSaved: (_) {},
+                              hintTxt: 'Where to ?',
+
+                              suffixIcon: Icon(Icons.search),
+                            ),
                           ))
                     ],
                   ),
