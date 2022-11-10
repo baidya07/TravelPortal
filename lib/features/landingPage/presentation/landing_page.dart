@@ -73,7 +73,6 @@ class LandingPage extends StatelessWidget {
                               fillColor: const Color(0xffE5E5E5),
                               onSaved: (_) {},
                               hintTxt: 'Where to ?',
-
                               suffixIcon: Icon(Icons.search),
                             ),
                           ))
