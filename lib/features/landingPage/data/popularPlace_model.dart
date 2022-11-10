@@ -1,21 +1,23 @@
-class PopularPlaces{
-  late int id;
-  late String imageUrl;
-  late String title;
-  late String description;
-  String? amount;
-  bool? isFeatured;
+import 'package:flutter/cupertino.dart';
 
-  PopularPlaces({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.imageUrl,
+class PopularPlaceModel{
+   int? id;
+   String? imageUrl;
+   String? title;
+   String? description;
+   String? amount;
+   bool? isFeatured;
+
+  PopularPlaceModel({
+    this.id,
+    this.title,
+    this.description,
+    this.imageUrl,
     this.isFeatured,
     this.amount
 });
 
-  factory PopularPlaces.fromJson(Map<String, dynamic> json) => PopularPlaces(
+  factory PopularPlaceModel.fromJson(Map<String, dynamic> json) => PopularPlaceModel(
       id: json['id'],
       title: json['title'],
       description: json['description'],

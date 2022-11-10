@@ -1,224 +1,248 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:travelportal/core/data/remote/dio_client.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 import 'package:travelportal/core/presentation/widget/forms/textfields.dart';
+import 'package:travelportal/features/landingPage/data/popularPlace_model.dart';
 
 import '../../../core/presentation/resources/size_constants.dart';
 import '../../../core/presentation/resources/ui_assets.dart';
 //import '../../core/presentation/widget/image_slider/image_slider.dart';
 
 class LandingPage extends StatelessWidget {
-  const LandingPage({Key? key}) : super(key: key);
+   final DioClient _client = DioClient();
+   LandingPage({
+
+    Key? key
+  }) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Stack(children: [
-              Image(
-                image: AssetImage(UIAssets.getDummyImage('bgimage.png')),
-              ),
-              AppBar(
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                centerTitle: true,
-                title: Text(
-                  "Trip",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline6!
-                      .copyWith(color: Colors.white),
+        child: FutureBuilder<PopularPlaceModel?>(
+          future: _client.getPost(id: '1'),
+          builder: (context, snapshot){
+            if(snapshot.hasData){
+              print("data arrived in landing page");
+              print(snapshot.data!.title);
+              PopularPlaceModel? postInfo = snapshot.data;
+              if(postInfo != null){
+                print("postInfo");
+                print(postInfo);
+                 // PopularPlaces postData = postInfo.amount;
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Stack(children: [
+                Image(
+                  image: AssetImage(UIAssets.getDummyImage('bgimage.png')),
                 ),
-                leading: IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(UIAssets.getSvg('ham.svg')),
-                ),
-                actions: [
-                  IconButton(
+                AppBar(
+                  elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  centerTitle: true,
+                  title: Text(
+                    "Trip",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(color: Colors.white),
+                  ),
+                  leading: IconButton(
                     onPressed: () {},
-                    icon: SvgPicture.asset(UIAssets.getSvg('notification.svg')),
+                    icon: SvgPicture.asset(UIAssets.getSvg('ham.svg')),
                   ),
-                ],
-              ),
-              Positioned(
-                top: 200,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: SC.mW),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Rediscover Yourself',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline5!
-                            .copyWith(color: Colors.white),
-                      ),
-                      Text(
-                        'Redisc self',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(color: Colors.white),
-                      ),
-                      SizedBox(
-                          width: MediaQuery.of(context).size.width / 1.09,
-                          child: Opacity(
-                            opacity: 0.9,
-                            child: PrimaryTextField(
-                              fillColor: const Color(0xffE5E5E5),
-                              onSaved: (_) {},
-                              hintTxt: 'Where to ?',
-                              suffixIcon: Icon(Icons.search),
-                            ),
-                          ))
-                    ],
-                  ),
+                  actions: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(UIAssets.getSvg('notification.svg')),
+                    ),
+                  ],
                 ),
-              ),
-            ]),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: SC.mW, vertical: SC.mH),
-              decoration: BoxDecoration(
-                border: Border.all(width: 0.1),
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    // color: const Color(0xffC0C0C0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        _BookingServices(
-                          imageTitle: 'flight.svg',
-                          title: 'Flight',
+                Positioned(
+                  top: 200,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: SC.mW),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Rediscover Yourself',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline5!
+                              .copyWith(color: Colors.white),
                         ),
-                        _BookingServices(
-                          imageTitle: 'car.svg',
-                          title: 'Transport',
+                        Text(
+                          'Redisc self',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(color: Colors.white),
                         ),
-                        _BookingServices(
-                          imageTitle: 'hotel.svg',
-                          title: 'Hotel',
-                        ),
-                        _BookingServices(
-                          imageTitle: 'events.svg',
-                          title: 'Events',
-                        )
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 1.09,
+                            child: Opacity(
+                              opacity: 0.9,
+                              child: PrimaryTextField(
+                                fillColor: const Color(0xffE5E5E5),
+                                onSaved: (_) {},
+                                hintTxt: 'Where to ?',
+                                suffixIcon: Icon(Icons.search),
+                              ),
+                            ))
                       ],
                     ),
                   ),
-                  //Icon(Icons.circle),
-                  // ImageSlider(
-                  //   dotPosition: DotPosition.bottomCenter,
-                  //   dotVerticalPadding: -15,
-                  //   dotSize: 5,
-                  //   images: [
-                  //
-                  //   ],
-                  // ),
-                  SBC.xxLH,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Best Vacation Destinations',
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                      Text(
-                        'View all',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2!
-                            .copyWith(color: const Color(0xffF46817)),
-                      )
-                    ],
-                  ),
-                  SBC.xxLH,
-
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Stack(children: [
-                            Container(
-                              width: 150,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 0.1,
-                                ),
-                                image: const DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(
-                                    "https://img.atlasobscura.com/E4TAgOMK1AzcL75mAoDIqpKvskhyDGanjzoS6B9bglc/rs:fill:580:580:1/g:ce/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy85Zjkw/MzEyMzEyOGQ4YTdi/ODZfSW5uWmEgMjAx/MyA1ODU1IHN0YWFu/ZC5qcGc.jpg",
-                                  ),
-                                ),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                            ),
-                            Positioned(
-                              left: 125,
-                              child: SvgPicture.asset(
-                                  UIAssets.getSvg('bookmark.svg')),
-                              // Icon(Icons.bookmark_border_sharp,
-                              //     color: Colors.white, size: 20),
-                            ),
-                          ]),
-                          Text(
-                            "data",
-                            style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ]),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: SC.mW, vertical: SC.mH),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 0.1),
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      // color: const Color(0xffC0C0C0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: const [
+                          _BookingServices(
+                            imageTitle: 'flight.svg',
+                            title: 'Flight',
                           ),
-                          SBC.sH,
-                          Text(
-                            "Iorem Ipsum",
-                            style: Theme.of(context).textTheme.bodyText2,
+                          _BookingServices(
+                            imageTitle: 'car.svg',
+                            title: 'Transport',
                           ),
+                          _BookingServices(
+                            imageTitle: 'hotel.svg',
+                            title: 'Hotel',
+                          ),
+                          _BookingServices(
+                            imageTitle: 'events.svg',
+                            title: 'Events',
+                          )
                         ],
                       ),
-                    ]
-                  ),
-                  const Divider(
-                    indent: 0.1,
-                  ),
-                  SBC.xxLH,
-                  Text(
-                    'Popular places near you',
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                  SBC.xxLH,
-                  ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    itemCount: 3,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return const _PopularPlaces();
-                    },
-                  ),
+                    ),
+                    //Icon(Icons.circle),
+                    // ImageSlider(
+                    //   dotPosition: DotPosition.bottomCenter,
+                    //   dotVerticalPadding: -15,
+                    //   dotSize: 5,
+                    //   images: [
+                    //
+                    //   ],
+                    // ),
+                    SBC.xxLH,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Best Vacation Destinations',
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
+                        Text(
+                          'View all',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(color: const Color(0xffF46817)),
+                        )
+                      ],
+                    ),
+                    SBC.xxLH,
 
-                  SBC.lH,
-                  PrimaryButton(
-                    onPressed: (_) {},
-                    title: 'Explore More',
-                    color: const Color(0xff3731EB),
-                  ),
-                  SBC.xLH,
-                  const _BottomBanner(),
-                  SBC.xLH,
-                  Text('Lorem Ipsum Dolor', style: Theme.of(context).textTheme.headline6,),
-                ],
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Stack(children: [
+                              Container(
+                                width: 150,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 0.1,
+                                  ),
+                                  image: const DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(
+                                      "https://img.atlasobscura.com/E4TAgOMK1AzcL75mAoDIqpKvskhyDGanjzoS6B9bglc/rs:fill:580:580:1/g:ce/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy85Zjkw/MzEyMzEyOGQ4YTdi/ODZfSW5uWmEgMjAx/MyA1ODU1IHN0YWFu/ZC5qcGc.jpg",
+                                    ),
+                                  ),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                              ),
+                              Positioned(
+                                left: 125,
+                                child: SvgPicture.asset(
+                                    UIAssets.getSvg('bookmark.svg')),
+                                // Icon(Icons.bookmark_border_sharp,
+                                //     color: Colors.white, size: 20),
+                              ),
+                            ]),
+                            Text(
+                              "data",
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            SBC.sH,
+                            Text(
+                              "Iorem Ipsum",
+                              style: Theme.of(context).textTheme.bodyText2,
+                            ),
+                          ],
+                        ),
+                      ]
+                    ),
+                    const Divider(
+                      indent: 0.1,
+                    ),
+                    SBC.xxLH,
+                    Text(
+                      'Popular places near you',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    SBC.xxLH,
+                    ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: 3,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return const _PopularPlaces();
+                      },
+                    ),
+
+                    SBC.lH,
+                    PrimaryButton(
+                      onPressed: (_) {},
+                      title: 'Explore More',
+                      color: const Color(0xff3731EB),
+                    ),
+                    SBC.xLH,
+                    const _BottomBanner(),
+                    SBC.xLH,
+                    Text('Lorem Ipsum Dolor', style: Theme.of(context).textTheme.headline6,),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          );
+              }
+            }
+            return Center(child: CircularProgressIndicator());
+          },
         ),
       ),
     );

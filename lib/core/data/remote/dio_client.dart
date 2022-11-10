@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../../features/landingPage/data/popular_place.dart';
+import '../../../features/landingPage/data/popularPlace_model.dart';
 
 class DioClient{
   final Dio _dio = Dio(
@@ -8,13 +8,17 @@ class DioClient{
   );
   final _baseUrl = 'https://636b3cc9ad62451f9fac38af.mockapi.io';
 
-  Future<PopularPlaces?> getPost({required String id}) async {
-    PopularPlaces? popular;
+  Future<PopularPlaceModel?> getPost({required String id}) async {
+    PopularPlaceModel? popular;
     try{
       Response postData = await _dio.get(_baseUrl + '/api/landing_page/popular/travel/$id');
       print('User info: ${postData.data}');
+      print(postData.data.runtimeType);
 
-      PopularPlaces popular = PopularPlaces.fromJson(postData.data);
+      print(postData.data["image"]);
+
+
+      PopularPlaceModel popular = PopularPlaceModel.fromJson(postData.data);
     } on DioError catch (e) {
       if(e.response != null){
         print('Dio error!');
