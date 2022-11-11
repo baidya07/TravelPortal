@@ -62,7 +62,7 @@ class LandingPage extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                   centerTitle: true,
                   title: Text(
-                    "Trip",
+                    "Travel Portal",
                     style: Theme.of(context)
                         .textTheme
                         .headline6!
