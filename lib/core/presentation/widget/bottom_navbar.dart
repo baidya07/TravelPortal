@@ -102,7 +102,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
                 ),
                 Text(
                   item.text,
-                  style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600),
+                  style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600, color: Color(0xff626262)),
                 ),
                 //  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               ],

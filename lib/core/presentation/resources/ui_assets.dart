@@ -33,9 +33,9 @@ class UIAssets {
 
   // svg icons
   static const homeIcon = "${svgDir}home.svg";
-  static const categoryIcon = "${svgDir}categories.svg";
-  static const cartIcon = "${svgDir}cart.svg";
-  static const profileIcon = "${svgDir}profile.svg";
+  static const savedIcon = "${svgDir}saved.svg";
+  static const bookingIcon = "${svgDir}booking.svg";
+  static const profileIcon = "${svgDir}account.svg";
   static const paperIcon = "${svgDir}paper.svg";
 
 

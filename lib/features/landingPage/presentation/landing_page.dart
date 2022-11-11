@@ -4,10 +4,13 @@ import 'package:travelportal/core/data/remote/dio_client.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 import 'package:travelportal/core/presentation/widget/forms/textfields.dart';
+import 'package:travelportal/core/presentation/widget/image_slider/image_slider_widget.dart';
 import 'package:travelportal/features/landingPage/data/popularPlace_model.dart';
 
+import '../../../core/presentation/resources/colors.dart';
 import '../../../core/presentation/resources/size_constants.dart';
 import '../../../core/presentation/resources/ui_assets.dart';
+import '../../../core/presentation/widget/bottom_navbar.dart';
 //import '../../core/presentation/widget/image_slider/image_slider.dart';
 
 class LandingPage extends StatelessWidget {
@@ -19,7 +22,21 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: FABBottomAppBar(
+        backgroundColor: Colors.white,
+        selectedColor: const Color(0xff3731EB),
+        // onTabSelected: (index) =>
+        //     model.onNavItemClick(context, index),
+        items: [
+          FABBottomAppBarItem(icon: UIAssets.homeIcon, text: "Home"),
+          FABBottomAppBarItem(icon: UIAssets.savedIcon, text: "Saved"),
+          FABBottomAppBarItem(icon: UIAssets.bookingIcon, text: "Bookings"),
+          FABBottomAppBarItem(icon: UIAssets.profileIcon, text: "Account"),
+        ],
+
+      ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       // FutureBuilder<PopularPlaceModel?>(
       //   future: _client.getPost(id: '1'),
       //   builder: (context, snapshot){
@@ -133,14 +150,17 @@ class LandingPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    //Icon(Icons.circle),
-                    // ImageSlider(
-                    //   dotPosition: DotPosition.bottomCenter,
-                    //   dotVerticalPadding: -15,
-                    //   dotSize: 5,
-                    //   images: [
-                    //
-                    //   ],
+                    // DotsIndicator(
+                    //   onPageSelected: (_){},
+                    //   dotSize: 3.0,
+                    //     dotSpacing: 3.0,
+                    //     color: const Color(0xffE5E5E5),
+                    //     controller: PageController(
+                    //       initialPage: 1,
+                    //       keepPage: true,
+                    //       viewportFraction: 1.0
+                    //     ),
+                    //     itemCount: 3
                     // ),
                     SBC.xxLH,
                     Row(
@@ -395,9 +415,3 @@ class _BookingServices extends StatelessWidget {
   }
 }
 
-//@getRequest
-// {
-//       "image": "",
-//       "title": "",
-//       "description": ""
-// }
