@@ -17,7 +17,7 @@ class LandingPage extends StatelessWidget {
    // final DioClient _client = DioClient();
    LandingPage({Key? key}) : super(key: key);
 
-//indicator bottom navigation    ktmcart custom bottom nav bar [borderline top line wrapping with container]
+//indicator bottom navigation [borderline top line wrapping with container]
 
   @override
   Widget build(BuildContext context) {
@@ -188,53 +188,9 @@ class LandingPage extends StatelessWidget {
                         children: List.generate(
                             // growable: true,
                             5, (index) {
-                          return Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Stack(children: [
-                                  Container(
-                                    width: 150,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 0.1,
-                                      ),
-                                      image: const DecorationImage(
-                                        fit: BoxFit.fill,
-                                        image: NetworkImage(
-                                          "https://img.atlasobscura.com/E4TAgOMK1AzcL75mAoDIqpKvskhyDGanjzoS6B9bglc/rs:fill:580:580:1/g:ce/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy85Zjkw/MzEyMzEyOGQ4YTdi/ODZfSW5uWmEgMjAx/MyA1ODU1IHN0YWFu/ZC5qcGc.jpg",
-                                        ),
-                                      ),
-                                      borderRadius: BorderRadius.circular(15.0),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 125,
-                                    child: SvgPicture.asset(
-                                        UIAssets.getSvg('bookmark.svg')),
-                                    // Icon(Icons.bookmark_border_sharp,
-                                    //     color: Colors.white, size: 20),
-                                  ),
-                                ]),
-                                SBC.sH,
-                                Text(
-                                  "data",
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                SBC.sH,
-                                Text(
-                                  "Iorem Ipsum",
-                                  style: Theme.of(context).textTheme.bodyText2,
-                                ),
-                              ],
-                            ),
-                              const SizedBox(
-                                width: 10,
-                              )
-                            ]
+                          return _ImageTile(
+                            imageUrl: "https://img.atlasobscura.com/E4TAgOMK1AzcL75mAoDIqpKvskhyDGanjzoS6B9bglc/rs:fill:580:580:1/g:ce/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy85Zjkw/MzEyMzEyOGQ4YTdi/ODZfSW5uWmEgMjAx/MyA1ODU1IHN0YWFu/ZC5qcGc.jpg",
+                            bookmark: 'bookmark.svg',
                           );
                         }),
                       ),
@@ -267,6 +223,19 @@ class LandingPage extends StatelessWidget {
                     const _BottomBanner(),
                     SBC.xLH,
                     Text('Lorem Ipsum Dolor', style: Theme.of(context).textTheme.headline6,),
+                    SBC.xLH,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: List.generate(
+                          // growable: true,
+                            5, (index) {
+                          return _ImageTile(imageUrl:'https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg');
+                        }),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -274,6 +243,68 @@ class LandingPage extends StatelessWidget {
           ),
         ),
       );
+  }
+}
+
+class _ImageTile extends StatelessWidget {
+  final String imageUrl;
+  String? bookmark;
+   _ImageTile({
+    required this.imageUrl,
+    this.bookmark,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(children: [
+            Container(
+              width: 150,
+              height: 100,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 0.1,
+                ),
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(
+                    imageUrl,
+                  ),
+                ),
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+            ),
+            Positioned(
+              left: 125,
+              child: SvgPicture.asset(
+                  UIAssets.getSvg('$bookmark')),
+              // Icon(Icons.bookmark_border_sharp,
+              //     color: Colors.white, size: 20),
+            ),
+          ]),
+          SBC.sH,
+          Text(
+            "data",
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          SBC.sH,
+          Text(
+            "Iorem Ipsum",
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+        ],
+      ),
+        const SizedBox(
+          width: 10,
+        )
+      ]
+    );
   }
 }
 
