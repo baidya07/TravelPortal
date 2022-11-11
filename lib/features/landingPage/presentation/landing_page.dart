@@ -11,30 +11,29 @@ import '../../../core/presentation/resources/ui_assets.dart';
 //import '../../core/presentation/widget/image_slider/image_slider.dart';
 
 class LandingPage extends StatelessWidget {
-   final DioClient _client = DioClient();
-   LandingPage({
+   // final DioClient _client = DioClient();
+   LandingPage({Key? key}) : super(key: key);
 
-    Key? key
-  }) : super(key: key);
-
-
+//indicator bottom navigation    ktmcart custom bottom nav bar [borderline top line wrapping with container]
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: FutureBuilder<PopularPlaceModel?>(
-          future: _client.getPost(id: '1'),
-          builder: (context, snapshot){
-            if(snapshot.hasData){
-              print("data arrived in landing page");
-              print(snapshot.data!.title);
-              PopularPlaceModel? postInfo = snapshot.data;
-              if(postInfo != null){
-                print("postInfo");
-                print(postInfo);
-                 // PopularPlaces postData = postInfo.amount;
-          return Column(
+      // FutureBuilder<PopularPlaceModel?>(
+      //   future: _client.getPost(id: '1'),
+      //   builder: (context, snapshot){
+      //     if(snapshot.hasData){
+      //       print("data arrived in landing page");
+      //       print(snapshot.data!.title);
+      //       PopularPlaceModel? postInfo = snapshot.data;
+      //       if(postInfo != null){
+      //         print("postInfo");
+      //         print(postInfo);
+      //          // PopularPlaces postData = postInfo.amount;
+      //   return
+        //todo: use provider taking refernce to salesberry (category)
+        child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Stack(children: [
@@ -161,50 +160,64 @@ class LandingPage extends StatelessWidget {
                       ],
                     ),
                     SBC.xxLH,
-
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Stack(children: [
-                              Container(
-                                width: 150,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 0.1,
-                                  ),
-                                  image: const DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(
-                                      "https://img.atlasobscura.com/E4TAgOMK1AzcL75mAoDIqpKvskhyDGanjzoS6B9bglc/rs:fill:580:580:1/g:ce/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy85Zjkw/MzEyMzEyOGQ4YTdi/ODZfSW5uWmEgMjAx/MyA1ODU1IHN0YWFu/ZC5qcGc.jpg",
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: List.generate(
+                            // growable: true,
+                            5, (index) {
+                          return Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Stack(children: [
+                                  Container(
+                                    width: 150,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 0.1,
+                                      ),
+                                      image: const DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                          "https://img.atlasobscura.com/E4TAgOMK1AzcL75mAoDIqpKvskhyDGanjzoS6B9bglc/rs:fill:580:580:1/g:ce/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy85Zjkw/MzEyMzEyOGQ4YTdi/ODZfSW5uWmEgMjAx/MyA1ODU1IHN0YWFu/ZC5qcGc.jpg",
+                                        ),
+                                      ),
+                                      borderRadius: BorderRadius.circular(15.0),
                                     ),
                                   ),
-                                  borderRadius: BorderRadius.circular(15.0),
+                                  Positioned(
+                                    left: 125,
+                                    child: SvgPicture.asset(
+                                        UIAssets.getSvg('bookmark.svg')),
+                                    // Icon(Icons.bookmark_border_sharp,
+                                    //     color: Colors.white, size: 20),
+                                  ),
+                                ]),
+                                SBC.sH,
+                                Text(
+                                  "data",
+                                  style: Theme.of(context).textTheme.bodyText1,
                                 ),
-                              ),
-                              Positioned(
-                                left: 125,
-                                child: SvgPicture.asset(
-                                    UIAssets.getSvg('bookmark.svg')),
-                                // Icon(Icons.bookmark_border_sharp,
-                                //     color: Colors.white, size: 20),
-                              ),
-                            ]),
-                            Text(
-                              "data",
-                              style: Theme.of(context).textTheme.bodyText1,
+                                SBC.sH,
+                                Text(
+                                  "Iorem Ipsum",
+                                  style: Theme.of(context).textTheme.bodyText2,
+                                ),
+                              ],
                             ),
-                            SBC.sH,
-                            Text(
-                              "Iorem Ipsum",
-                              style: Theme.of(context).textTheme.bodyText2,
-                            ),
-                          ],
-                        ),
-                      ]
+                              const SizedBox(
+                                width: 10,
+                              )
+                            ]
+                          );
+                        }),
+                      ),
                     ),
                     const Divider(
                       indent: 0.1,
@@ -238,14 +251,9 @@ class LandingPage extends StatelessWidget {
                 ),
               ),
             ],
-          );
-              }
-            }
-            return Center(child: CircularProgressIndicator());
-          },
+          ),
         ),
-      ),
-    );
+      );
   }
 }
 
