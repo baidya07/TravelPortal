@@ -11,7 +11,7 @@ import '../../../core/presentation/resources/colors.dart';
 import '../../../core/presentation/resources/size_constants.dart';
 import '../../../core/presentation/resources/ui_assets.dart';
 import '../../../core/presentation/widget/bottom_navbar.dart';
-//import '../../core/presentation/widget/image_slider/image_slider.dart';
+//import '../../core/presentation/widgnet/image_slider/image_slider.dart';
 
 class LandingPage extends StatelessWidget {
    // final DioClient _client = DioClient();
