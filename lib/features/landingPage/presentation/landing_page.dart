@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travelportal/core/data/remote/dio_client.dart';
+import 'package:travelportal/core/presentation/routes/router.gr.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 import 'package:travelportal/core/presentation/widget/forms/textfields.dart';
@@ -57,27 +59,31 @@ class LandingPage extends StatelessWidget {
                 Image(
                   image: AssetImage(UIAssets.getDummyImage('bgimage.png')),
                 ),
-                AppBar(
-                  elevation: 0,
-                  backgroundColor: Colors.transparent,
-                  centerTitle: true,
-                  title: Text(
-                    "Travel Portal",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6!
-                        .copyWith(color: Colors.white),
-                  ),
-                  leading: IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(UIAssets.getSvg('ham.svg')),
-                  ),
-                  actions: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(UIAssets.getSvg('notification.svg')),
+                Positioned(
+                  top: 30,
+                  left: 20,
+                  child: AppBar(
+                    elevation: 0,
+                    backgroundColor: Colors.transparent,
+                    centerTitle: true,
+                    title: Text(
+                      "Travel Portal",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(color: Colors.white),
                     ),
-                  ],
+                    leading: IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(UIAssets.getSvg('ham.svg')),
+                    ),
+                    actions: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(UIAssets.getSvg('notification.svg')),
+                      ),
+                    ],
+                  ),
                 ),
                 Positioned(
                   top: 200,
@@ -257,53 +263,58 @@ class _ImageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return InkWell(
+      onTap: (){
+        context.router.push(const DetailRoute());
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Stack(children: [
-            Container(
-              width: 150,
-              height: 100,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 0.1,
-                ),
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(
-                    imageUrl,
+          Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(children: [
+              Container(
+                width: 150,
+                height: 100,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 0.1,
                   ),
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: NetworkImage(
+                      imageUrl,
+                    ),
+                  ),
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
-                borderRadius: BorderRadius.circular(15.0),
               ),
+              Positioned(
+                left: 125,
+                child: SvgPicture.asset(
+                    UIAssets.getSvg('$bookmark')),
+                // Icon(Icons.bookmark_border_sharp,
+                //     color: Colors.white, size: 20),
+              ),
+            ]),
+            SBC.sH,
+            Text(
+              "data",
+              style: Theme.of(context).textTheme.bodyText1,
             ),
-            Positioned(
-              left: 125,
-              child: SvgPicture.asset(
-                  UIAssets.getSvg('$bookmark')),
-              // Icon(Icons.bookmark_border_sharp,
-              //     color: Colors.white, size: 20),
+            SBC.sH,
+            Text(
+              "Iorem Ipsum",
+              style: Theme.of(context).textTheme.bodyText2,
             ),
-          ]),
-          SBC.sH,
-          Text(
-            "data",
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-          SBC.sH,
-          Text(
-            "Iorem Ipsum",
-            style: Theme.of(context).textTheme.bodyText2,
-          ),
-        ],
+          ],
+        ),
+          const SizedBox(
+            width: 10,
+          )
+        ]
       ),
-        const SizedBox(
-          width: 10,
-        )
-      ]
     );
   }
 }
