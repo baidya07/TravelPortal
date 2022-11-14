@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 
 import '../../core/presentation/resources/colors.dart';
 import '../../core/presentation/resources/size_constants.dart';
 import '../../core/presentation/resources/ui_assets.dart';
+import '../../core/presentation/widget/forms/buttons.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -90,7 +92,7 @@ class DetailPage extends StatelessWidget {
                       border: Border.all(
                         width: 0.1,
                       ),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         fit: BoxFit.fill,
                         image: NetworkImage(
                           'https://res.cloudinary.com/wilderness-travel/image/upload/c_scale,dpr_auto,w_auto/f_auto,q_auto/v1/hotels/asia/nepal/yak-and-yeti-ktm/2-yak-yeti-kathmandu-nepal-bedroom-1',
@@ -101,7 +103,23 @@ class DetailPage extends StatelessWidget {
                   ),
                   SBC.mH,
                   Text('Location', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600),),
-
+                  SBC.mH,
+                  const CustomCachedNetworkImage(
+                      'https://www.google.com/maps/vt/data=utvkqKJ53YR_2aCBtXAPNeUilpboFjrrt7g4cPIPW7FKkL_rhFIV4BR1BpoNETygurKJgsXmZI2SuC2yDnU_wTYN3h1HY6xM4ti3SOASKrUM0xU8tGMIWJNWEU18wK6vPPtSSmijyZjc3uyhWx6xb7GX_1d0AoGDN-1ht-2vIcKfYVW30erglyS93iJ_bSf3ZxE',
+                    aspectRatio: 2.1,
+                  ),
+                  SBC.mH,
+                  Text('Amenities', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600),),
+                  SBC.mH,
+                  Text('view all amenities', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600, color: secondaryColor),),
+                  SBC.lH,
+                  Text('What our guest say about us :', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600),),
+                  SBC.mH,
+                  PrimaryOutlinedButton(
+                    onPressed: (){},
+                    title: 'View All 250 review',
+                    color: Colors.black,
+                  ),
                 ],
               ),
             ),
@@ -131,7 +149,7 @@ class _CustomIconButton extends StatelessWidget {
       ),
       child: Icon(
         icon,
-        color: primaryColor,
+        color: secondaryColor,
       ),
     );
   }
