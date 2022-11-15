@@ -148,13 +148,16 @@ class DetailPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                             'I had I was very sad this day.'
-                                'There were \n friendly people at the bar that engaged with me.\n '
-                                'Interactions with people was very well needed. \n '
-                                'I enjoyed a great Long Island ice tea,some \n tasty vegetarian nachos, \n and sat by the water',
+                                'There were \n friendly people at the bar that engaged with \n me. '
+                                'Interactions with people was very well \n '
+                                'needed. I enjoyed a great Long Island ice tea,\n '
+                                'some tasty vegetarian nachos, \n'
+                                'and sat by the water',
                           style: Theme.of(context).textTheme.bodyText2,
                             ),
                         Column(
@@ -163,14 +166,14 @@ class DetailPage extends StatelessWidget {
                             const SizedBox(
                               width: 50,
                               child: CircularAvatar(
-                                borderRadius: 10,
+                                borderRadius: 50,
                                 imageUrl:
                                   'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80',
                               ),
                             ),
                             Text('Robert', style: Theme.of(context).textTheme.bodyText2,),
                             const SizedBox(
-                              height: 35,
+                              height: 25,
                             ),
                             const FiveStar(),
                           ],
