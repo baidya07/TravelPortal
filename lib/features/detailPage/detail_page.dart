@@ -5,10 +5,19 @@ import 'package:travelportal/core/presentation/widget/cached_network_image_build
 import '../../core/presentation/resources/colors.dart';
 import '../../core/presentation/resources/size_constants.dart';
 import '../../core/presentation/resources/ui_assets.dart';
+import '../../core/presentation/widget/circular_avatar.dart';
 import '../../core/presentation/widget/forms/buttons.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}) : super(key: key);
+
+  final List subImage = const [
+    'https://www.yakandyeti.com/templates/yootheme/cache/dynasty-image1-31baf870.jpeg',
+    'https://www.yakandyeti.com/images/gallery/atrium.jpg',
+    'https://ak-d.tripcdn.com/images/220c0z000000myirhFF6A_Z_1100_824_R5_Q70_D.jpg',
+    'https://www.hotelscombined.com/himg/6a/ae/79/expediav2-149981-2775686049-789721.jpg',
+    'https://res.cloudinary.com/wilderness-travel/image/upload/c_scale,dpr_auto,w_auto/f_auto,q_auto/v1/hotels/asia/nepal/yak-and-yeti-ktm/2-yak-yeti-kathmandu-nepal-bedroom-1'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -85,23 +94,25 @@ class DetailPage extends StatelessWidget {
                   Text('Amet minim mollit non deserunt ullamco est sit \n aliqua dolor do amet sint. Velit officia consequat \n duis enim velit mollit..see more', style: Theme.of(context).textTheme.bodyText2,),
                   SBC.mH,
                   Text('Gallery', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600),),
-                  Container(
-                    width: 150,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 0.1,
-                      ),
-                      image: const DecorationImage(
-                        fit: BoxFit.fill,
-                        image: NetworkImage(
-                          'https://res.cloudinary.com/wilderness-travel/image/upload/c_scale,dpr_auto,w_auto/f_auto,q_auto/v1/hotels/asia/nepal/yak-and-yeti-ktm/2-yak-yeti-kathmandu-nepal-bedroom-1',
-                        ),
-                      ),
-                      borderRadius: BorderRadius.circular(15.0),
+                  SBC.mH,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      // mainAxisSize: MainAxisSize.min,
+                      children: List.generate(
+                          subImage.length,
+                              (index) => SizedBox(
+                              height: 100,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: CircularAvatar(
+                                  imageUrl: subImage[index],
+                                  borderRadius: 10,
+                                ),
+                              ))),
                     ),
                   ),
-                  SBC.mH,
                   Text('Location', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600),),
                   SBC.mH,
                   const CustomCachedNetworkImage(
