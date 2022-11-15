@@ -226,7 +226,7 @@ class LandingPage extends StatelessWidget {
                       color: const Color(0xff3731EB),
                     ),
                     SBC.xLH,
-                    const _BottomBanner(),
+                    const BottomBanner(),
                     SBC.xLH,
                     Text('Lorem Ipsum Dolor', style: Theme.of(context).textTheme.headline6,),
                     SBC.xLH,
@@ -319,8 +319,8 @@ class _ImageTile extends StatelessWidget {
   }
 }
 
-class _BottomBanner extends StatelessWidget {
-  const _BottomBanner({
+class BottomBanner extends StatelessWidget {
+  const BottomBanner({
     Key? key,
   }) : super(key: key);
 

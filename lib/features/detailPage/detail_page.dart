@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
+import 'package:travelportal/features/landingPage/presentation/landing_page.dart';
 
 import '../../core/presentation/resources/colors.dart';
 import '../../core/presentation/resources/size_constants.dart';
@@ -37,18 +39,16 @@ class DetailPage extends StatelessWidget {
                     backgroundColor: Colors.transparent,
                     leading: Container(
                         decoration: BoxDecoration(
-                          color: const Color(0xffFFFFFF),
+                          color: const Color(0xffFFFFFF)!.withOpacity(0.5),
                           border: Border.all(
                             width: 0.1,
                           ),
                         ),
-                        child: const Icon(Icons.arrow_back_ios, color: Color(0xff3731EB),),),
-                    actions: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(UIAssets.getSvg('notification.svg'), width: 25,),
-                      ),
-                    ],
+                        child: InkWell(
+                            onTap: (){
+                              context.router.pop();
+                            },
+                            child: const Icon(Icons.arrow_back_ios, color: Color(0xff3731EB))),),
                   ),
                 ),
               ]
@@ -67,12 +67,7 @@ class DetailPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text('Hotel Yak & Yeti', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600),),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: List.generate(5, (index) {
-                              return const Icon(Icons.star, color: Color(0xffF46817), size: 15,);
-                            } ),
-                          ),
+                          const FiveStar(),
                         ],
                       ),
                       Row(
@@ -122,21 +117,116 @@ class DetailPage extends StatelessWidget {
                   SBC.mH,
                   Text('Amenities', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600),),
                   SBC.mH,
-                  Text('view all amenities', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600, color: secondaryColor),),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const[
+                       _hotelFacility(iconName: 'location.svg',),
+                       _hotelFacility(iconName: 'flight.svg',),
+                       _hotelFacility(iconName: 'icon1.svg',),
+                    ],
+                  ),
+                  SBC.mH,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const[
+                      _hotelFacility(iconName: 'icon2.svg',),
+                      _hotelFacility(iconName: 'wifi.svg',),
+                      _hotelFacility(iconName: 'icon3.svg',),
+                    ],
+                  ),
+                  SBC.mH,
+                  PrimaryTextButton(title: 'view all amenities', onPressed: (){}),
                   SBC.lH,
                   Text('What our guest say about us :', style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w600),),
                   SBC.mH,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 0.2,
+                      ),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                            'I had I was very sad this day.'
+                                'There were \n friendly people at the bar that engaged with me.\n '
+                                'Interactions with people was very well needed. \n '
+                                'I enjoyed a great Long Island ice tea,some \n tasty vegetarian nachos, \n and sat by the water',
+                          style: Theme.of(context).textTheme.bodyText2,
+                            ),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const SizedBox(
+                              width: 50,
+                              child: CircularAvatar(
+                                borderRadius: 10,
+                                imageUrl:
+                                  'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80',
+                              ),
+                            ),
+                            Text('Robert', style: Theme.of(context).textTheme.bodyText2,),
+                            const SizedBox(
+                              height: 35,
+                            ),
+                            const FiveStar(),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SBC.xLH,
                   PrimaryOutlinedButton(
                     onPressed: (){},
                     title: 'View All 250 review',
                     color: Colors.black,
                   ),
+                  SBC.mH,
+                  const BottomBanner(),
                 ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class FiveStar extends StatelessWidget {
+  const FiveStar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(5, (index) {
+        return const Icon(Icons.star, color: Color(0xffF46817), size: 12,);
+      } ),
+    );
+  }
+}
+
+class _hotelFacility extends StatelessWidget {
+  final String iconName;
+  const _hotelFacility({
+    required this.iconName,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SvgPicture.asset(UIAssets.getSvg(iconName), width: 20,),
+        SBC.mW,
+        Text('lorem ips', style: Theme.of(context).textTheme.bodyText2,)
+      ],
     );
   }
 }
