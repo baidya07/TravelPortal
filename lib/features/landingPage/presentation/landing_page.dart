@@ -176,13 +176,11 @@ class LandingPage extends StatelessWidget {
                           'Best Vacation Destinations',
                           style: Theme.of(context).textTheme.headline6,
                         ),
-                        Text(
-                          'View all',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2!
-                              .copyWith(color: const Color(0xffF46817)),
-                        )
+                        PrimaryTextButton(title: 'View all',
+                            color: const Color(0xffF46817),
+                            onPressed: (){
+                          context.router.navigate(const ListingRoute());
+                        }),
                       ],
                     ),
                     SBC.xxLH,
@@ -215,7 +213,7 @@ class LandingPage extends StatelessWidget {
                       itemCount: 3,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        return const _PopularPlaces();
+                        return const PopularPlaces();
                       },
                     ),
 
@@ -357,8 +355,8 @@ class BottomBanner extends StatelessWidget {
   }
 }
 
-class _PopularPlaces extends StatelessWidget {
-  const _PopularPlaces({
+class PopularPlaces extends StatelessWidget {
+  const PopularPlaces({
     Key? key,
   }) : super(key: key);
 

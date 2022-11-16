@@ -11,51 +11,62 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:flutter/material.dart' as _i4;
+import 'package:auto_route/auto_route.dart' as _i4;
+import 'package:flutter/material.dart' as _i5;
 
 import '../../../features/detailPage/detail_page.dart' as _i2;
 import '../../../features/landingPage/presentation/landing_page.dart' as _i1;
+import '../../../features/listingPage/listing_page.dart' as _i3;
 
-class AppRouter extends _i3.RootStackRouter {
-  AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
+class AppRouter extends _i4.RootStackRouter {
+  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i3.PageFactory> pagesMap = {
+  final Map<String, _i4.PageFactory> pagesMap = {
     LandingRoute.name: (routeData) {
       final args = routeData.argsAs<LandingRouteArgs>(
           orElse: () => const LandingRouteArgs());
-      return _i3.MaterialPageX<dynamic>(
+      return _i4.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i1.LandingPage(key: args.key),
       );
     },
     DetailRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i4.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.DetailPage(),
+      );
+    },
+    ListingRoute.name: (routeData) {
+      return _i4.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i3.ListingPage(),
       );
     },
   };
 
   @override
-  List<_i3.RouteConfig> get routes => [
-        _i3.RouteConfig(
+  List<_i4.RouteConfig> get routes => [
+        _i4.RouteConfig(
           LandingRoute.name,
           path: '/',
         ),
-        _i3.RouteConfig(
+        _i4.RouteConfig(
           DetailRoute.name,
           path: '/detail-page',
+        ),
+        _i4.RouteConfig(
+          ListingRoute.name,
+          path: '/listing-page',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.LandingPage]
-class LandingRoute extends _i3.PageRouteInfo<LandingRouteArgs> {
-  LandingRoute({_i4.Key? key})
+class LandingRoute extends _i4.PageRouteInfo<LandingRouteArgs> {
+  LandingRoute({_i5.Key? key})
       : super(
           LandingRoute.name,
           path: '/',
@@ -68,7 +79,7 @@ class LandingRoute extends _i3.PageRouteInfo<LandingRouteArgs> {
 class LandingRouteArgs {
   const LandingRouteArgs({this.key});
 
-  final _i4.Key? key;
+  final _i5.Key? key;
 
   @override
   String toString() {
@@ -78,7 +89,7 @@ class LandingRouteArgs {
 
 /// generated route for
 /// [_i2.DetailPage]
-class DetailRoute extends _i3.PageRouteInfo<void> {
+class DetailRoute extends _i4.PageRouteInfo<void> {
   const DetailRoute()
       : super(
           DetailRoute.name,
@@ -86,4 +97,16 @@ class DetailRoute extends _i3.PageRouteInfo<void> {
         );
 
   static const String name = 'DetailRoute';
+}
+
+/// generated route for
+/// [_i3.ListingPage]
+class ListingRoute extends _i4.PageRouteInfo<void> {
+  const ListingRoute()
+      : super(
+          ListingRoute.name,
+          path: '/listing-page',
+        );
+
+  static const String name = 'ListingRoute';
 }
