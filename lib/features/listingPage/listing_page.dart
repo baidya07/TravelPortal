@@ -64,7 +64,7 @@ class ListingPage extends StatelessWidget {
                   children: [
                     const FeaturedWidget(),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Harmony Boutique',
