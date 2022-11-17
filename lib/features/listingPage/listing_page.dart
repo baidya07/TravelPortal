@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/presentation/resources/size_constants.dart';
+import '../../core/presentation/resources/ui_assets.dart';
 import '../../core/presentation/widget/cached_network_image_builder.dart';
 import '../landingPage/presentation/landing_page.dart';
 
@@ -27,6 +29,27 @@ class ListingPage extends StatelessWidget {
             child: Icon(Icons.search_rounded, color: Colors.black,),
           ),
         ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(25.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Image.asset(UIAssets.getIcon('sorticon.png'), width: 20,),
+                  Text('Sort', style: Theme.of(context).textTheme.bodyText2,),
+                ],
+              ),Row(
+                children: [
+                  Image.asset(UIAssets.getIcon('filterIcon.png'), width: 20,),
+                  Text('Filter', style: Theme.of(context).textTheme.bodyText2,),
+                ],
+              ),
+              Image.asset(UIAssets.getIcon('icon1.png'), width: 20,),
+            ],
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
