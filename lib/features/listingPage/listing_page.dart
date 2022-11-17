@@ -17,16 +17,25 @@ class ListingPage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: InkWell(
-            onTap: (){
+            onTap: () {
               context.router.pop();
             },
-            child: const Icon(Icons.arrow_back_ios, color: Colors.black,)),
-        title: Text('Tile here', style: Theme.of(context).textTheme.bodyText1,),
+            child: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            )),
+        title: Text(
+          'Tile here',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
         centerTitle: true,
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: SC.mW),
-            child: Icon(Icons.search_rounded, color: Colors.black,),
+            child: Icon(
+              Icons.search_rounded,
+              color: Colors.black,
+            ),
           ),
         ],
         bottom: PreferredSize(
@@ -37,108 +46,135 @@ class ListingPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Image.asset(UIAssets.getIcon('sorticon.png'), width: 20,),
-                  Text('Sort', style: Theme.of(context).textTheme.bodyText2,),
-                ],
-              ),Row(
-                children: [
-                  Image.asset(UIAssets.getIcon('filterIcon.png'), width: 20,),
-                  Text('Filter', style: Theme.of(context).textTheme.bodyText2,),
+                  Image.asset(
+                    UIAssets.getIcon('sorticon.png'),
+                    width: 16,
+                  ),
+                  SBC.mW,
+                  Text(
+                    'Sort',
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
                 ],
               ),
-              Image.asset(UIAssets.getIcon('icon1.png'), width: 20,),
+              Row(
+                children: [
+                  Image.asset(
+                    UIAssets.getIcon('filterIcon.png'),
+                    width: 20,
+                  ),
+                  SBC.mW,
+                  Text(
+                    'Filter',
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                ],
+              ),
+              Image.asset(
+                UIAssets.getIcon('icon1.png'),
+                width: 20,
+              ),
             ],
           ),
         ),
       ),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          SBC.lH,
-          Text('Destinations', style: Theme.of(context).textTheme.bodyText1,),
-          SBC.lH,
-          // ListView.builder(
-          //   scrollDirection: Axis.vertical,
-          //   itemCount: 1,
-          //   shrinkWrap: true,
-          //   itemBuilder: (context, index) {
-          //     return const PopularPlaces();
-          //   },
-          // ),
-          Row(
-          children: [
-            SBC.mW,
-            const SizedBox(
-              height: 100,
-              width: 99,
-              child: CustomCachedNetworkImage(
-                'https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg',
-                fit: BoxFit.cover,
-                aspectRatio: 2.1,
-              ),
+            Text(
+              'Destinations',
+              style: Theme.of(context).textTheme.bodyText1,
             ),
-            SBC.mW,
-            Container(
-              color: Colors.greenAccent,
-              child: Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const FeaturedWidget(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Harmony Boutique',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                        Text(
-                          '\$180.00',
-                          style: Theme.of(context).textTheme.bodyText1!.copyWith(decoration: TextDecoration.lineThrough),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Hotel',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                        Text(
-                          '\$120.00',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        )
-                      ],
-                    ),
-                    Text(
-                      'Lorem ipsum dolor sit amet',
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-
-                  ],
-                ),
-              ),
-            )
+            SBC.lH,
+            ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: 2,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return const PopularPlaceGrid();
+              },
+            ),
           ],
-        )
-        /*
-        *
-
-
-
-        Text(
-          'kjasd aijhdbiad aisdbajsbd',
-          style: Theme.of(context).textTheme.bodyText2,
         ),
-        SBC.xxLH,
-      ],
-    )
-        *
-        * */
+      ),
+    );
+  }
+}
 
-        ],),
+class PopularPlaceGrid extends StatelessWidget {
+  const PopularPlaceGrid({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: SC.mH),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SBC.mW,
+          const SizedBox(
+            height: 100,
+            width: 99,
+            child: CustomCachedNetworkImage(
+              'https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg',
+              fit: BoxFit.cover,
+              aspectRatio: 2.1,
+            ),
+          ),
+          SBC.mW,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const FeaturedWidget(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Harmony Boutique',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  const SizedBox(
+                    width: 80,
+                  ),
+                  Text(
+                    '\$180.00',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(decoration: TextDecoration.lineThrough),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Hotel',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  const SizedBox(
+                    width: 138,
+                  ),
+                  Text(
+                    '\$120.00',
+                    style: Theme.of(context).textTheme.headline6,
+                  )
+                ],
+              ),
+              Text(
+                'Lorem ipsum dolor sit amet',
+                style: Theme.of(context).textTheme.caption,
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
@@ -152,13 +188,14 @@ class FeaturedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-          horizontal: SC.mW, vertical: SC.mH),
+      height: 34,
+      padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
       decoration: BoxDecoration(
+        color: const Color(0xffF46817).withOpacity(0.10),
         border: Border.all(
           width: 0.1,
         ),
-        borderRadius: BorderRadius.circular(22.0),
+        borderRadius: BorderRadius.circular(18.0),
       ),
       child: Text(
         'Featured',

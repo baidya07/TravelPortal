@@ -213,7 +213,7 @@ class LandingPage extends StatelessWidget {
                       itemCount: 3,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        return const PopularPlaces();
+                        return const PopularPlaceList();
                       },
                     ),
 
@@ -355,8 +355,8 @@ class BottomBanner extends StatelessWidget {
   }
 }
 
-class PopularPlaces extends StatelessWidget {
-  const PopularPlaces({
+class PopularPlaceList extends StatelessWidget {
+  const PopularPlaceList({
     Key? key,
   }) : super(key: key);
 
