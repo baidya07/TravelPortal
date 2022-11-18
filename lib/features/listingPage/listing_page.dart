@@ -145,8 +145,7 @@ class _ListingPageState extends State<ListingPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: List.generate(
-                  // growable: true,
-                    5, (index) {
+                   4, (index) {
                   return ImageTile(
                     imageUrl: "https://generatorfun.com/code/uploads/Random-Hotel-image-1.jpg",
                     bookmark: 'bookmark.svg',
@@ -169,7 +168,7 @@ class PopularPlaceGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: SC.mH),
+      margin: const EdgeInsets.symmetric(vertical: SC.sH,),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
