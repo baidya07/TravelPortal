@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 import 'package:travelportal/features/listingPage/provider/changeIcon_provider.dart';
 
 import '../../core/presentation/resources/size_constants.dart';
@@ -105,6 +106,7 @@ class _ListingPageState extends State<ListingPage> {
         ),
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -126,6 +128,30 @@ class _ListingPageState extends State<ListingPage> {
               },
             ),
             const BottomBanner(),
+            SBC.xxLH,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Similar Destinations', style: Theme.of(context).textTheme.headline6,),
+                PrimaryTextButton(title: 'View All', onPressed: (){}, color: const Color(0xffF46817),),
+              ],
+            ),
+            SBC.xxLH,
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                  // growable: true,
+                    5, (index) {
+                  return ImageTile(
+                    imageUrl: "https://generatorfun.com/code/uploads/Random-Hotel-image-1.jpg",
+                    bookmark: 'bookmark.svg',
+                  );
+                }),
+              ),
+            ),
           ],
         ),
       ),

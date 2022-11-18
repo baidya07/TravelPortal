@@ -1,19 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:travelportal/core/data/remote/dio_client.dart';
 import 'package:travelportal/core/presentation/routes/router.gr.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 import 'package:travelportal/core/presentation/widget/forms/textfields.dart';
-import 'package:travelportal/core/presentation/widget/image_slider/image_slider_widget.dart';
-import 'package:travelportal/features/landingPage/data/popularPlace_model.dart';
 
-import '../../../core/presentation/resources/colors.dart';
+
 import '../../../core/presentation/resources/size_constants.dart';
 import '../../../core/presentation/resources/ui_assets.dart';
 import '../../../core/presentation/widget/bottom_navbar.dart';
-//import '../../core/presentation/widgnet/image_slider/image_slider.dart';
+
 
 class LandingPage extends StatelessWidget {
    // final DioClient _client = DioClient();
@@ -132,29 +129,26 @@ class LandingPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      // color: const Color(0xffC0C0C0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: const [
-                          _BookingServices(
-                            imageTitle: 'flight.svg',
-                            title: 'Flight',
-                          ),
-                          _BookingServices(
-                            imageTitle: 'car.svg',
-                            title: 'Transport',
-                          ),
-                          _BookingServices(
-                            imageTitle: 'hotel.svg',
-                            title: 'Hotel',
-                          ),
-                          _BookingServices(
-                            imageTitle: 'events.svg',
-                            title: 'Events',
-                          )
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: const [
+                        _BookingServices(
+                          imageTitle: 'flight.svg',
+                          title: 'Flight',
+                        ),
+                        _BookingServices(
+                          imageTitle: 'car.svg',
+                          title: 'Transport',
+                        ),
+                        _BookingServices(
+                          imageTitle: 'hotel.svg',
+                          title: 'Hotel',
+                        ),
+                        _BookingServices(
+                          imageTitle: 'events.svg',
+                          title: 'Events',
+                        )
+                      ],
                     ),
                     // DotsIndicator(
                     //   onPageSelected: (_){},
@@ -192,7 +186,7 @@ class LandingPage extends StatelessWidget {
                         children: List.generate(
                             // growable: true,
                             5, (index) {
-                          return _ImageTile(
+                          return ImageTile(
                             imageUrl: "https://img.atlasobscura.com/E4TAgOMK1AzcL75mAoDIqpKvskhyDGanjzoS6B9bglc/rs:fill:580:580:1/g:ce/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy85Zjkw/MzEyMzEyOGQ4YTdi/ODZfSW5uWmEgMjAx/MyA1ODU1IHN0YWFu/ZC5qcGc.jpg",
                             bookmark: 'bookmark.svg',
                           );
@@ -230,13 +224,13 @@ class LandingPage extends StatelessWidget {
                     SBC.xLH,
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: List.generate(
                           // growable: true,
                             5, (index) {
-                          return _ImageTile(imageUrl:'https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg');
+                          return ImageTile(imageUrl:'https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg');
                         }),
                       ),
                     ),
@@ -250,10 +244,10 @@ class LandingPage extends StatelessWidget {
   }
 }
 
-class _ImageTile extends StatelessWidget {
+class ImageTile extends StatelessWidget {
   final String imageUrl;
   String? bookmark;
-   _ImageTile({
+   ImageTile({
     required this.imageUrl,
     this.bookmark,
     Key? key,
@@ -265,53 +259,53 @@ class _ImageTile extends StatelessWidget {
       onTap: (){
         context.router.push(const DetailRoute());
       },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: SC.mW),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Stack(children: [
-              Container(
-                width: 150,
-                height: 100,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 0.1,
-                  ),
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(
-                      imageUrl,
+            Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(children: [
+                Container(
+                  width: 150,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 0.1,
                     ),
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: NetworkImage(
+                        imageUrl,
+                      ),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
-                  borderRadius: BorderRadius.circular(15.0),
                 ),
+                Positioned(
+                  left: 125,
+                  child: SvgPicture.asset(
+                      UIAssets.getSvg('$bookmark')),
+                  // Icon(Icons.bookmark_border_sharp,
+                  //     color: Colors.white, size: 20),
+                ),
+              ]),
+              SBC.sH,
+              Text(
+                "data",
+                style: Theme.of(context).textTheme.bodyText1,
               ),
-              Positioned(
-                left: 125,
-                child: SvgPicture.asset(
-                    UIAssets.getSvg('$bookmark')),
-                // Icon(Icons.bookmark_border_sharp,
-                //     color: Colors.white, size: 20),
+              SBC.sH,
+              Text(
+                "Iorem Ipsum",
+                style: Theme.of(context).textTheme.bodyText2,
               ),
-            ]),
-            SBC.sH,
-            Text(
-              "data",
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-            SBC.sH,
-            Text(
-              "Iorem Ipsum",
-              style: Theme.of(context).textTheme.bodyText2,
-            ),
-          ],
+            ],
+          ),
+                    ]
         ),
-          const SizedBox(
-            width: 10,
-          )
-        ]
       ),
     );
   }
@@ -370,7 +364,7 @@ class PopularPlaceList extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(width: 0.1),
           ),
-          child: CustomCachedNetworkImage(
+          child: const CustomCachedNetworkImage(
             'https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg',
             fit: BoxFit.cover,
             aspectRatio: 2.1,
