@@ -16,10 +16,12 @@ class LandingPage extends StatelessWidget {
    // final DioClient _client = DioClient();
    LandingPage({Key? key}) : super(key: key);
 
+
 //indicator bottom navigation [borderline top line wrapping with container]
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: FABBottomAppBar(
         backgroundColor: Colors.white,
@@ -57,8 +59,8 @@ class LandingPage extends StatelessWidget {
                   image: AssetImage(UIAssets.getDummyImage('bgimage.png')),
                 ),
                 Positioned(
-                  top: 30,
-                  left: 20,
+                  // top: 30,
+                  // left: 20,
                   child: AppBar(
                     elevation: 0,
                     backgroundColor: Colors.transparent,
@@ -292,9 +294,9 @@ class ImageTile extends StatelessWidget {
                   //     color: Colors.white, size: 20),
                 ),
               ]),
-              SBC.sH,
+              SBC.mH,
               Text(
-                "data",
+                "Addison Garden",
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               SBC.sH,

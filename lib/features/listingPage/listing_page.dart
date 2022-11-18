@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 import 'package:travelportal/features/listingPage/provider/changeIcon_provider.dart';
 
@@ -19,6 +20,7 @@ class ListingPage extends StatefulWidget {
 
 class _ListingPageState extends State<ListingPage> {
   bool click = true;
+  bool _enabled = true;
   @override
   Widget build(BuildContext context) {
     // final iconProvider = Provider.of<ChangeIconProvider>(context);
