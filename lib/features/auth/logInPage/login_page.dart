@@ -66,8 +66,10 @@ class LoginPage extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         SvgPicture.asset(UIAssets.getIcon('google_icon.svg')),
+                        SBC.mW,
                         SvgPicture.asset(UIAssets.getIcon('fb_icon.svg')),
                       ],
                     ),
@@ -76,12 +78,14 @@ class LoginPage extends StatelessWidget {
               ),
               //todo add google fb icon
               SBC.xLH,
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('New User ? ', style: Theme.of(context).textTheme.bodyText2,),
-                  PrimaryTextButton(title: 'Create Account', onPressed: (){},),
-                ],
+              Center(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('New User ? ', style: Theme.of(context).textTheme.bodyText2,),
+                    PrimaryTextButton(title: 'Create Account', onPressed: (){},),
+                  ],
+                ),
               )
             ],
           ),
