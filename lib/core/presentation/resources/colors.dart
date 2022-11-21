@@ -4,18 +4,18 @@ class AppColors {
   static Color primaryColor(double opacity) {
     try {
       // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return const Color(0xFFE5E5E5).withOpacity(opacity);
+      return const Color(0xFF3731EB).withOpacity(opacity);
     } catch (e) {
-      return const Color(0xFFE5E5E5).withOpacity(opacity);
+      return const Color(0xFF3731EB).withOpacity(opacity);
     }
   }
 
   static Color secondaryColor(double opacity) {
     try {
       // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return const Color(0xFF3731EB).withOpacity(opacity);
+      return const Color(0xFFF46817).withOpacity(opacity);
     } catch (e) {
-      return const Color(0xFF3731EB).withOpacity(opacity);
+      return const Color(0xFFF46817).withOpacity(opacity);
     }
   }
 
@@ -90,14 +90,14 @@ class AppColors {
 // );
 }
 
-final primaryColor = const Color(0xFFE5E5E5);
-final primaryColorDark = const Color(0xFFE5E5E5);
-final primaryColorLight = const Color(0x66E5E5E5);
-final secondaryColor = const Color(0xFF3731EB);
-final scaffoldBgColor = const Color(0xFFF8F8F8); //#E5E5E5
+final primaryColor = const Color(0xFF3731EB);
+final primaryColorDark = const Color(0xFF3731EB);
+final primaryColorLight = const Color(0x663731EB);
+final secondaryColor = const Color(0xFFF46817);
+final scaffoldBgColor = const Color(0xFFF46817); //#E5E5E5
 // final secondaryColor = Color(0xFFFB8C00);
 // final secondaryColorDark = Color(0xFFFB8C00);
-final secondaryColorDark = const Color(0x663731EB);
+final secondaryColorDark = const Color(0x66F46817);
 final disabledColor = Colors.grey[400];
 const dividerColor = Colors.grey;
 
