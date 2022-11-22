@@ -26,7 +26,7 @@ class SplashPage extends StatelessWidget {
             width: double.infinity,
             child: const Center(
               child: AppLogo(
-                    aspectRatio: 7,
+                    aspectRatio: 5.5,
                 ),
               ),
             ),

@@ -55,7 +55,9 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
               SBC.xLH,
-              PrimaryButton(onPressed: (){}, title: 'Log in'),
+              PrimaryButton(onPressed: (){
+                context.router.push(LandingRoute());
+              }, title: 'Log in'),
               SBC.xLH,
               Center(
                 child: Column(

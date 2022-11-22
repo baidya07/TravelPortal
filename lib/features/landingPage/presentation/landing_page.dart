@@ -26,13 +26,15 @@ class LandingPage extends StatelessWidget {
       bottomNavigationBar: FABBottomAppBar(
         backgroundColor: Colors.white,
         selectedColor: const Color(0xff3731EB),
-        // onTabSelected: (index) =>
+        onTabSelected: (_) {
+          context.router.push(ProfileRoute());
+        },
         //     model.onNavItemClick(context, index),
         items: [
           FABBottomAppBarItem(icon: UIAssets.homeIcon, text: "Home"),
           FABBottomAppBarItem(icon: UIAssets.savedIcon, text: "Saved"),
           FABBottomAppBarItem(icon: UIAssets.bookingIcon, text: "Bookings"),
-          FABBottomAppBarItem(icon: UIAssets.profileIcon, text: "Account"),
+          FABBottomAppBarItem(icon: UIAssets.profileIcon, text: "Account", ),
         ],
 
       ),

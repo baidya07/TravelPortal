@@ -11,74 +11,85 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:flutter/material.dart' as _i7;
+import 'package:auto_route/auto_route.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 
 import '../../../features/auth/logInPage/login_page.dart' as _i2;
-import '../../../features/detailPage/detail_page.dart' as _i4;
-import '../../../features/landingPage/presentation/landing_page.dart' as _i3;
-import '../../../features/listingPage/listing_page.dart' as _i5;
+import '../../../features/detailPage/detail_page.dart' as _i5;
+import '../../../features/landingPage/presentation/landing_page.dart' as _i4;
+import '../../../features/listingPage/listing_page.dart' as _i6;
+import '../../../features/profile/profile_page.dart' as _i3;
 import '../../../features/splashPage/splash_page.dart' as _i1;
 
-class AppRouter extends _i6.RootStackRouter {
-  AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
+class AppRouter extends _i7.RootStackRouter {
+  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i6.PageFactory> pagesMap = {
+  final Map<String, _i7.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.SplashPage(),
       );
     },
     LoginRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.LoginPage(),
+      );
+    },
+    ProfileRoute.name: (routeData) {
+      return _i7.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i3.ProfilePage(),
       );
     },
     LandingRoute.name: (routeData) {
       final args = routeData.argsAs<LandingRouteArgs>(
           orElse: () => const LandingRouteArgs());
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i3.LandingPage(key: args.key),
+        child: _i4.LandingPage(key: args.key),
       );
     },
     DetailRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.DetailPage(),
+        child: const _i5.DetailPage(),
       );
     },
     ListingRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i5.ListingPage(),
+        child: const _i6.ListingPage(),
       );
     },
   };
 
   @override
-  List<_i6.RouteConfig> get routes => [
-        _i6.RouteConfig(
+  List<_i7.RouteConfig> get routes => [
+        _i7.RouteConfig(
           SplashRoute.name,
           path: '/',
         ),
-        _i6.RouteConfig(
+        _i7.RouteConfig(
           LoginRoute.name,
           path: '/login-page',
         ),
-        _i6.RouteConfig(
+        _i7.RouteConfig(
+          ProfileRoute.name,
+          path: '/profile-page',
+        ),
+        _i7.RouteConfig(
           LandingRoute.name,
           path: '/landing-page',
         ),
-        _i6.RouteConfig(
+        _i7.RouteConfig(
           DetailRoute.name,
           path: '/detail-page',
         ),
-        _i6.RouteConfig(
+        _i7.RouteConfig(
           ListingRoute.name,
           path: '/listing-page',
         ),
@@ -87,7 +98,7 @@ class AppRouter extends _i6.RootStackRouter {
 
 /// generated route for
 /// [_i1.SplashPage]
-class SplashRoute extends _i6.PageRouteInfo<void> {
+class SplashRoute extends _i7.PageRouteInfo<void> {
   const SplashRoute()
       : super(
           SplashRoute.name,
@@ -99,7 +110,7 @@ class SplashRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginPage]
-class LoginRoute extends _i6.PageRouteInfo<void> {
+class LoginRoute extends _i7.PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
@@ -110,9 +121,21 @@ class LoginRoute extends _i6.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.LandingPage]
-class LandingRoute extends _i6.PageRouteInfo<LandingRouteArgs> {
-  LandingRoute({_i7.Key? key})
+/// [_i3.ProfilePage]
+class ProfileRoute extends _i7.PageRouteInfo<void> {
+  const ProfileRoute()
+      : super(
+          ProfileRoute.name,
+          path: '/profile-page',
+        );
+
+  static const String name = 'ProfileRoute';
+}
+
+/// generated route for
+/// [_i4.LandingPage]
+class LandingRoute extends _i7.PageRouteInfo<LandingRouteArgs> {
+  LandingRoute({_i8.Key? key})
       : super(
           LandingRoute.name,
           path: '/landing-page',
@@ -125,7 +148,7 @@ class LandingRoute extends _i6.PageRouteInfo<LandingRouteArgs> {
 class LandingRouteArgs {
   const LandingRouteArgs({this.key});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -134,8 +157,8 @@ class LandingRouteArgs {
 }
 
 /// generated route for
-/// [_i4.DetailPage]
-class DetailRoute extends _i6.PageRouteInfo<void> {
+/// [_i5.DetailPage]
+class DetailRoute extends _i7.PageRouteInfo<void> {
   const DetailRoute()
       : super(
           DetailRoute.name,
@@ -146,8 +169,8 @@ class DetailRoute extends _i6.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.ListingPage]
-class ListingRoute extends _i6.PageRouteInfo<void> {
+/// [_i6.ListingPage]
+class ListingRoute extends _i7.PageRouteInfo<void> {
   const ListingRoute()
       : super(
           ListingRoute.name,
