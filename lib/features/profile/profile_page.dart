@@ -42,15 +42,13 @@ class ProfilePage extends StatelessWidget {
             children: [
               SBC.xxLH,
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Stack(
                       children: [
                     CircleAvatar(
                       backgroundColor: Colors.transparent,
                       child: Container(
-                        width: 100,
-                        height: 100,
+                        width: 300,
                         decoration: BoxDecoration(
                           border: Border.all(width: 0.1),
                           borderRadius: BorderRadius.circular(100.0),
@@ -58,7 +56,6 @@ class ProfilePage extends StatelessWidget {
                             fit: BoxFit.cover,
                             image: NetworkImage(
                               'https://www.looper.com/img/gallery/megan-foxs-big-regret-about-her-time-as-a-transformers-star/intro-1598364383.jpg',
-                              scale: 1.0,
                             ),
                           )
                         ),
@@ -79,7 +76,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                           child: IconButton(onPressed: (){}, icon: SvgPicture.asset(UIAssets.getSvg('edit_icon.svg'))))),
                   ]),
-                  SBC.mW,
+                  SBC.xXlW,
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
