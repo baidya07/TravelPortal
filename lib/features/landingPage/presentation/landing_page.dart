@@ -38,7 +38,16 @@ class LandingPage extends StatelessWidget {
         ],
 
       ),
-      body: SingleChildScrollView(
+      body:
+      /*
+      * // [
+      //HomeRoute(),
+      //  SavedRoute(),
+      //  BookingRoute(),
+      //  ProfileRoute(),
+      // ].elementAt(model.lastSelectedNav)
+      * */
+      SingleChildScrollView(
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       // FutureBuilder<PopularPlaceModel?>(
       //   future: _client.getPost(id: '1'),
@@ -136,19 +145,19 @@ class LandingPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
-                        _BookingServices(
+                        BookingServices(
                           imageTitle: 'flight.svg',
                           title: 'Flight',
                         ),
-                        _BookingServices(
+                        BookingServices(
                           imageTitle: 'car.svg',
                           title: 'Transport',
                         ),
-                        _BookingServices(
+                        BookingServices(
                           imageTitle: 'hotel.svg',
                           title: 'Hotel',
                         ),
-                        _BookingServices(
+                        BookingServices(
                           imageTitle: 'events.svg',
                           title: 'Events',
                         )
@@ -431,11 +440,11 @@ class PopularPlaceList extends StatelessWidget {
   }
 }
 
-class _BookingServices extends StatelessWidget {
+class BookingServices extends StatelessWidget {
   final String imageTitle;
   final String title;
 
-  const _BookingServices({
+  const BookingServices({
     required this.imageTitle,
     required this.title,
     Key? key,
