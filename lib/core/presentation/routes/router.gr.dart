@@ -17,7 +17,7 @@ import 'package:flutter/material.dart' as _i6;
 import '../../../features/detailPage/detail_page.dart' as _i3;
 import '../../../features/landingPage/presentation/landing_page.dart' as _i2;
 import '../../../features/listingPage/listing_page.dart' as _i4;
-import '../../../features/splashPage/splash_page.dart' as _i1;
+import '../../../features/login_page/login_page.dart' as _i1;
 
 class AppRouter extends _i5.RootStackRouter {
   AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
@@ -25,10 +25,10 @@ class AppRouter extends _i5.RootStackRouter {
 
   @override
   final Map<String, _i5.PageFactory> pagesMap = {
-    SplashRoute.name: (routeData) {
+    LoginRoute.name: (routeData) {
       return _i5.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i1.SplashPage(),
+        child: const _i1.LoginPage(),
       );
     },
     LandingRoute.name: (routeData) {
@@ -56,7 +56,7 @@ class AppRouter extends _i5.RootStackRouter {
   @override
   List<_i5.RouteConfig> get routes => [
         _i5.RouteConfig(
-          SplashRoute.name,
+          LoginRoute.name,
           path: '/',
         ),
         _i5.RouteConfig(
@@ -75,15 +75,15 @@ class AppRouter extends _i5.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.SplashPage]
-class SplashRoute extends _i5.PageRouteInfo<void> {
-  const SplashRoute()
+/// [_i1.LoginPage]
+class LoginRoute extends _i5.PageRouteInfo<void> {
+  const LoginRoute()
       : super(
-          SplashRoute.name,
+          LoginRoute.name,
           path: '/',
         );
 
-  static const String name = 'SplashRoute';
+  static const String name = 'LoginRoute';
 }
 
 /// generated route for
