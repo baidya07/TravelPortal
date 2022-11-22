@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:travelportal/core/presentation/resources/colors.dart';
+import 'package:travelportal/core/presentation/routes/router.gr.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 import 'package:travelportal/core/presentation/widget/circular_avatar.dart';
 
@@ -98,7 +100,11 @@ class ProfilePage extends StatelessWidget {
               SBC.xxLH,
               const _Heading(title: 'App Settings',),
               SBC.xxLH,
-              const _ProfileSettings(imageTitle: 'settings_icon.svg', title: 'Settings',),
+              InkWell(
+                  onTap: (){
+                    context.router.push(const SettingRoute());
+                  },
+                  child: const _ProfileSettings(imageTitle: 'settings_icon.svg', title: 'Settings',)),
               const _ProfileSettings(imageTitle: 'help_icon.svg', title: 'Help Center',),
               const _ProfileSettings(imageTitle: 'feedback_icon.svg', title: 'Feedback',),
               const _ProfileSettings(imageTitle: 'rate_icon.svg', title: 'Rate App',),
@@ -108,13 +114,18 @@ class ProfilePage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SvgPicture.asset(UIAssets.getSvg('exit_icon.svg')),
-                        SBC.xLW,
-                        Text('Sign out', style: Theme.of(context).textTheme.bodyText2,),
-                      ],
+                    InkWell(
+                      onTap:(){
+                        context.router.push(const SecondaryLoginRoute());
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SvgPicture.asset(UIAssets.getSvg('exit_icon.svg')),
+                          SBC.xLW,
+                          Text('Sign out', style: Theme.of(context).textTheme.bodyText2,),
+                        ],
+                      ),
                     ),
                     Text('lorem@gmail.com', style: Theme.of(context).textTheme.caption,)
                   ],
