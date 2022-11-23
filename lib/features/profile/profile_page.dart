@@ -48,9 +48,9 @@ class ProfilePage extends StatelessWidget {
                   Stack(
                       children: [
                     CircleAvatar(
+                      radius: 40,
                       backgroundColor: Colors.transparent,
                       child: Container(
-                        width: 300,
                         decoration: BoxDecoration(
                           border: Border.all(width: 0.1),
                           borderRadius: BorderRadius.circular(100.0),
@@ -63,20 +63,40 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ) ,
                     ),
-                    Positioned(
-                      top: 20,
-                        left: 20,
-                        child: Container(
+                        Positioned(
+                          top: 60,
+                          left: 50,
+                          width: 40,
                           height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            color: primaryColor,
-                            border: Border.all(
-                              width: 0.2,
+                          child: SizedBox(
+                            width: 50,
+                            height: 60,
+                            child: CircleAvatar(
+                              radius: 5,
+                              child: Image(
+                                image: AssetImage(
+                                  UIAssets.getDummyImage(
+                                    'icons3.png',
+                                  ),
+                                ),
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(50),
                           ),
-                          child: IconButton(onPressed: (){}, icon: SvgPicture.asset(UIAssets.getSvg('edit_icon.svg'))))),
+                        ),
+                    // Positioned(
+                    //   top: 20,
+                    //     left: 20,
+                    //     child: Container(
+                    //       height: 20,
+                    //       width: 20,
+                    //       decoration: BoxDecoration(
+                    //         color: primaryColor,
+                    //         border: Border.all(
+                    //           width: 0.2,
+                    //         ),
+                    //         borderRadius: BorderRadius.circular(50),
+                    //       ),
+                    //       child: IconButton(onPressed: (){}, icon: SvgPicture.asset(UIAssets.getSvg('edit_icon.svg'))))),
                   ]),
                   SBC.xXlW,
                   Column(
