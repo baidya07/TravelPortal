@@ -46,7 +46,7 @@ class AppRouter extends _i11.RootStackRouter {
     SecondaryLoginRoute.name: (routeData) {
       return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i3.SecondaryLoginPage(),
+        child: _i3.SecondaryLoginPage(),
       );
     },
     ProfileRoute.name: (routeData) {
