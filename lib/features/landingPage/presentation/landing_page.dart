@@ -12,6 +12,10 @@ import '../../../core/presentation/routes/router.gr.dart';
 import '../../../core/presentation/widget/bottom_navbar.dart';
 import '../../../core/presentation/widget/forms/buttons.dart';
 import '../../../core/presentation/widget/forms/textfields.dart';
+import '../../bookings/booking_page.dart';
+import '../../home/home_page.dart';
+import '../../profile/profile_page.dart';
+import '../../saved/saved_page.dart';
 import '../widgets/booking_service.dart';
 import '../widgets/bottom_banner.dart';
 import '../widgets/image_tile.dart';
@@ -32,7 +36,7 @@ class LandingPage extends StatelessWidget {
         backgroundColor: Colors.white,
         selectedColor: const Color(0xff3731EB),
         onTabSelected: (_) {
-          context.router.push(ProfileRoute());
+          context.router.push(BookingRoute());
         },
         //     model.onNavItemClick(context, index),
         items: [
@@ -251,9 +255,9 @@ class LandingPage extends StatelessWidget {
   }
 }
 
-//new error landing page
+// new error landing page
+
 // class LandingPage extends StatefulWidget {
-//    // final DioClient _client = DioClient();
 //    LandingPage({Key? key}) : super(key: key);
 //
 //   @override
@@ -261,7 +265,7 @@ class LandingPage extends StatelessWidget {
 // }
 //
 // class _LandingPageState extends State<LandingPage> {
-//   late var _selectedIndex = 0;
+//   int _selectedIndex = 0;
 //
 //   static const List<Widget> _widgetOptions = <Widget>[
 //     HomePage(),
@@ -276,11 +280,8 @@ class LandingPage extends StatelessWidget {
 //       _selectedIndex = index;
 //     });
 //   }
-//
-// //indicator bottom navigation [borderline top line wrapping with container]
 //   @override
 //   Widget build(BuildContext context) {
-//     //Size size = MediaQuery.of(context).size;
 //     return Scaffold(
 //       bottomNavigationBar: BottomNavigationBar(
 //         items: <BottomNavigationBarItem>[
@@ -296,17 +297,31 @@ class LandingPage extends StatelessWidget {
 //       ),
 //       body: ListView(
 //         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-//         scrollDirection: Axis.vertical,
-//         primary: true,
-//         shrinkWrap: false,
-//         // physics: const NeverScrollableScrollPhysics(),
-//         children: [
-//           IndexedStack(
-//             index: _selectedIndex,
-//             children: _widgetOptions,
-//           ),
-//         ],
-//       ),
+//       children: [
+//         IndexedStack(
+//                index: _selectedIndex,
+//                children: const [
+//                  HomePage(),
+//                  SavedPage(),
+//                  BookingPage(),
+//                  ProfilePage(),
+//                ],
+//             ),
+//       ],
+//        ),
+//       // ListView(
+//       //   physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+//       //   scrollDirection: Axis.vertical,
+//       //   primary: true,
+//       //   shrinkWrap: false,
+//       //   // physics: const NeverScrollableScrollPhysics(),
+//       //   children: [
+//       //     IndexedStack(
+//       //       index: _selectedIndex,
+//       //       children: _widgetOptions,
+//       //     ),
+//       //   ],
+//       // ),
 //       /*
 //       * */
 //       // SingleChildScrollView(

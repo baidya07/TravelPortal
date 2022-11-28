@@ -17,13 +17,13 @@ import '../../../features/setting_page/setting_page.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: SplashPage, initial: true),
+    AutoRoute(page: SplashPage, ),
+    AutoRoute(page: BookingPage, initial: true),
     AutoRoute(page: LoginPage,),
     AutoRoute(page: SecondaryLoginPage,),
     AutoRoute(page: ProfilePage,),
     AutoRoute(page: LandingPage,),
     AutoRoute(page: SavedPage,),
-    AutoRoute(page: BookingPage,),
     AutoRoute(page: DetailPage),
     AutoRoute(page: ListingPage),
     AutoRoute(page: SettingPage),
