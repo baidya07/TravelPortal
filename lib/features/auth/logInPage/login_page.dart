@@ -19,8 +19,9 @@ class LoginPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           padding:
-          const EdgeInsets.symmetric(horizontal: SC.lW, vertical: SC.lH),
-          margin: const EdgeInsets.symmetric(horizontal: SC.lW, vertical: SC.lH),
+              const EdgeInsets.symmetric(horizontal: SC.lW, vertical: SC.lH),
+          margin:
+              const EdgeInsets.symmetric(horizontal: SC.lW, vertical: SC.lH),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -30,40 +31,69 @@ class LoginPage extends StatelessWidget {
               Center(
                 child: Container(
                     height: 70,
-                    margin: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
-                    padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
-                    child: Image.asset(UIAssets.getDummyImage('login_logo.png'))),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: SC.mW, vertical: SC.mH),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: SC.mW, vertical: SC.mH),
+                    child:
+                        Image.asset(UIAssets.getDummyImage('login_logo.png'))),
               ),
               SBC.mH,
-              Center(child: Text('Log in', style: Theme.of(context).textTheme.bodyText1,)),
+              Center(
+                  child: Text(
+                'Log in',
+                style: Theme.of(context).textTheme.bodyText1,
+              )),
               SBC.xLH,
-              Text('Your e-mail', style: Theme.of(context).textTheme.bodyText1,),
-              PrimaryTextField(onSaved: (_){}, hintTxt: "john@gmail.com",),
+              Text(
+                'Your e-mail',
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              PrimaryTextField(
+                onSaved: (_) {},
+                hintTxt: "john@gmail.com",
+              ),
               SBC.mH,
-              Text('Password', style: Theme.of(context).textTheme.bodyText1,),
-              PrimaryTextField(onSaved: (_){}, hintTxt: "Please enter your password", suffixIcon: const Icon(Icons.visibility_off),),
+              Text(
+                'Password',
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              PrimaryTextField(
+                onSaved: (_) {},
+                hintTxt: "Please enter your password",
+                suffixIcon: const Icon(Icons.visibility_off),
+              ),
               SBC.mH,
               Align(
                   alignment: Alignment.topRight,
-                  child: PrimaryTextButton(title: 'Forgot Password ?', onPressed: (){})),
+                  child: PrimaryTextButton(
+                      title: 'Forgot Password ?', onPressed: () {})),
               SBC.mH,
               Row(
                 children: [
                   const Icon(Icons.check_box_outline_blank),
                   SBC.sW,
-                  Text('Keep me logged in', style: Theme.of(context).textTheme.caption,)
+                  Text(
+                    'Keep me logged in',
+                    style: Theme.of(context).textTheme.caption,
+                  )
                 ],
               ),
               SBC.xLH,
-              PrimaryButton(onPressed: (){
-                context.router.push(LandingRoute());
-              }, title: 'Log in'),
+              PrimaryButton(
+                  onPressed: () {
+                    context.router.push(LandingRoute());
+                  },
+                  title: 'Log in'),
               SBC.xLH,
               Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('Or Signin Using', style: Theme.of(context).textTheme.caption,),
+                    Text(
+                      'Or Signin Using',
+                      style: Theme.of(context).textTheme.caption,
+                    ),
                     SBC.sH,
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,7 +102,9 @@ class LoginPage extends StatelessWidget {
                       children: [
                         SvgPicture.asset(UIAssets.getIcon('google_icon.svg')),
                         SBC.mW,
-                        SvgPicture.asset(UIAssets.getIcon('fb_icon.svg')),
+                        SvgPicture.asset(
+                          UIAssets.getIcon('fb_icon.svg'),
+                        ),
                       ],
                     ),
                   ],
@@ -84,8 +116,16 @@ class LoginPage extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('New User ? ', style: Theme.of(context).textTheme.bodyText2,),
-                    PrimaryTextButton(title: 'Create Account', onPressed: (){},),
+                    Text(
+                      'New User ? ',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    PrimaryTextButton(
+                      title: 'Create Account',
+                      onPressed: () {
+                        context.router.push(SignupRoute());
+                      },
+                    ),
                   ],
                 ),
               )
@@ -93,7 +133,6 @@ class LoginPage extends StatelessWidget {
           ),
         ),
       ),
-
     );
   }
 }
