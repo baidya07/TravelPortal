@@ -9,6 +9,7 @@ import '../../core/presentation/resources/size_constants.dart';
 import '../../core/presentation/resources/ui_assets.dart';
 import '../../core/presentation/widget/circular_avatar.dart';
 import '../../core/presentation/widget/forms/buttons.dart';
+import '../landingPage/widgets/bottom_banner.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}) : super(key: key);

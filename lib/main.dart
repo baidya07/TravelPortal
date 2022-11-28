@@ -3,9 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:travelportal/core/presentation/routes/router.gr.dart';
 
+import 'core/services/service_locator.dart';
 import 'features/landingPage/presentation/landing_page.dart';
 
 void main() {
+  // setup();
   runApp(
       DevicePreview(
         enabled: !kReleaseMode,

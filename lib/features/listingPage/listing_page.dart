@@ -1,15 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
-import 'package:travelportal/features/listingPage/provider/changeIcon_provider.dart';
+
 
 import '../../core/presentation/resources/size_constants.dart';
 import '../../core/presentation/resources/ui_assets.dart';
 import '../../core/presentation/widget/cached_network_image_builder.dart';
-import '../landingPage/presentation/landing_page.dart';
+import '../landingPage/widgets/bottom_banner.dart';
+import '../landingPage/widgets/image_tile.dart';
+import '../landingPage/widgets/popular_place.dart';
 
 class ListingPage extends StatefulWidget {
   const ListingPage({Key? key}) : super(key: key);
