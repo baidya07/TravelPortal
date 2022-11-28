@@ -61,7 +61,9 @@ class BookingPage extends StatelessWidget {
               SBC.lH,
               const _PaymentMethod(),
               SBC.lH,
-              const TermsNCondition()
+              const TermsNCondition(),
+              SBC.lH,
+              PrimaryButton(onPressed: (){}, title: 'Confirm Booking'),
             ],
           ),
         ),
