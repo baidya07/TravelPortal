@@ -96,6 +96,16 @@ class _PaymentMethod extends StatelessWidget {
               hintTxt: 'XXXX-XXXX-XXXX-XXXX',
             ),
             SBC.lH,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(UIAssets.getDummyImage('visa.png'), width: 50),
+                Image.asset(UIAssets.getDummyImage('mastercard.png'),width: 50),
+                Image.asset(UIAssets.getDummyImage('paypal.png'), width: 50),
+              ],
+            ),
+            SBC.lH,
             PrimaryTextField(
               onSaved: (_){},
               hintTxt: 'MM/YY',
