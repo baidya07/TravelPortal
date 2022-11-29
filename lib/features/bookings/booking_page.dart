@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 import 'package:travelportal/core/presentation/resources/ui_assets.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 import 'package:travelportal/core/presentation/widget/forms/textfields.dart';
+import 'package:travelportal/features/bookings/provider/counter_provider.dart';
 
 import '../../core/presentation/resources/size_constants.dart';
 import '../detailPage/detail_page.dart';
@@ -14,57 +16,60 @@ class BookingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFEDEDED),
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
-        title: Text('Booking Preferences',
-            style: Theme.of(context)
-                .textTheme
-                .bodyText2!
-                .copyWith(color: Colors.black)),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 0.1,
-                  ),
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Column(
-                  children: const[
-                    CustomCachedNetworkImage(
-                      'https://c8.alamy.com/comp/D45XRY/hotel-yak-yeti-katmandu-nepal-asia-D45XRY.jpg',
-                      fit: BoxFit.fill,
-                      aspectRatio: 2.1,
+    return ChangeNotifierProvider(
+      create: (context) => CounterProvider(),
+      child: Scaffold(
+        backgroundColor: const Color(0xFFEDEDED),
+        appBar: AppBar(
+          iconTheme: const IconThemeData(color: Colors.black),
+          title: Text('Booking Preferences',
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText2!
+                  .copyWith(color: Colors.black)),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
+            child: Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 0.1,
                     ),
-                     _HotelInfo(),
-                  ],
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Column(
+                    children: const[
+                      CustomCachedNetworkImage(
+                        'https://c8.alamy.com/comp/D45XRY/hotel-yak-yeti-katmandu-nepal-asia-D45XRY.jpg',
+                        fit: BoxFit.fill,
+                        aspectRatio: 2.1,
+                      ),
+                       _HotelInfo(),
+                    ],
+                  ),
                 ),
-              ),
-              SBC.lH,
-              const _GuestNumber(),
-              SBC.lH,
-              const _DetailsForm(),
-              SBC.lH,
-              const _ExtraInfo(),
-              SBC.lH,
-              const _PriceSummary(),
-              SBC.lH,
-              const _PaymentMethod(),
-              SBC.lH,
-              const TermsNCondition(),
-              SBC.lH,
-              PrimaryButton(onPressed: (){}, title: 'Confirm Booking'),
-            ],
+                SBC.lH,
+                const _GuestNumber(),
+                SBC.lH,
+                const _DetailsForm(),
+                SBC.lH,
+                const _ExtraInfo(),
+                SBC.lH,
+                const _PriceSummary(),
+                SBC.lH,
+                const _PaymentMethod(),
+                SBC.lH,
+                const TermsNCondition(),
+                SBC.lH,
+                PrimaryButton(onPressed: (){}, title: 'Confirm Booking'),
+              ],
+            ),
           ),
         ),
       ),
@@ -378,32 +383,44 @@ class _NumberOperator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final counter = Provider.of<CounterProvider>(context);
+    final count = counter.count;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 0.1,
+        InkWell(
+          onTap: (){
+            counter.decrease();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 0.1,
+              ),
+              borderRadius: BorderRadius.circular(50.0),
             ),
-            borderRadius: BorderRadius.circular(50.0),
+            child: const Icon(Icons.remove),
           ),
-          child: Icon(Icons.remove),
         ),
         SBC.mW,
         Text(
-          '1',
+          '$count',
           style: Theme.of(context).textTheme.bodyText2,
         ),
         SBC.mW,
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 0.1,
+        InkWell(
+          onTap: (){
+            counter.increase();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 0.1,
+              ),
+              borderRadius: BorderRadius.circular(50.0),
             ),
-            borderRadius: BorderRadius.circular(50.0),
+            child: const Icon(Icons.add),
           ),
-          child: Icon(Icons.add),
         ),
       ],
     );
