@@ -18,10 +18,10 @@ class LandingPage extends StatelessWidget {
     return AutoTabsScaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       routes: const[
-         HomeRoute(),
-         SavedRoute(),
-         BookingRoute(),
-         ProfileRoute()
+         HomeRouter(),
+         SavedRouter(),
+         BookingRouter(),
+         ProfileRouter()
     ],
       bottomNavigationBuilder: (_, tabsRouter){
         return SizedBox(

@@ -19,17 +19,27 @@ import '../../../features/setting_page/setting_page.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage, initial: true),
-    AutoRoute(page: HomePage,),
-    AutoRoute(page: SavedPage,),
-    AutoRoute(page: BookingPage,),
     AutoRoute(page: LoginPage,),
     AutoRoute(page: SecondaryLoginPage,),
-    AutoRoute(page: ProfilePage,),
-    AutoRoute(page: LandingPage,),
-    AutoRoute(page: SavedPage,),
     AutoRoute(page: DetailPage),
     AutoRoute(page: ListingPage),
     AutoRoute(page: SettingPage),
+    AutoRoute(
+      path: 'landing',
+      page: LandingPage,
+      children: [
+        CustomRoute(
+            path: '',
+            name: 'homeRouter',
+            page: HomePage,
+            transitionsBuilder : TransitionsBuilders.slideTop
+        ),
+        AutoRoute(page: SavedPage, path: 'saved', name: 'savedRouter'),
+        AutoRoute(page: BookingPage, path: 'booking', name: 'bookingRouter'),
+        AutoRoute(page: ProfilePage, path: 'profile', name: 'profileRouter'),
+      ],
+    ),
+
   ],
 )
 class $AppRouter {}

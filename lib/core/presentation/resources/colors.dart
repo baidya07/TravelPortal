@@ -13,9 +13,9 @@ class AppColors {
   static Color secondaryColor(double opacity) {
     try {
       // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return const Color(0xFFF46817).withOpacity(opacity);
+      return const Color(0xFFFFFFFF).withOpacity(opacity);
     } catch (e) {
-      return const Color(0xFFF46817).withOpacity(opacity);
+      return const Color(0xFFFFFFFF).withOpacity(opacity);
     }
   }
 
@@ -93,11 +93,11 @@ class AppColors {
 final primaryColor = const Color(0xFF3731EB);
 final primaryColorDark = const Color(0xFF3731EB);
 final primaryColorLight = const Color(0x663731EB);
-final secondaryColor = const Color(0xFFF46817);
-final scaffoldBgColor = const Color(0xFFF46817); //#E5E5E5
+final secondaryColor = const Color(0xFFFFFFFF);
+final scaffoldBgColor = const Color(0xFFFFFFFF); //#E5E5E5
 // final secondaryColor = Color(0xFFFB8C00);
 // final secondaryColorDark = Color(0xFFFB8C00);
-final secondaryColorDark = const Color(0x66F46817);
+final secondaryColorDark = const Color(0xFFFFFFFF);
 final disabledColor = Colors.grey[400];
 const dividerColor = Colors.grey;
 
