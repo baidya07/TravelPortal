@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:travelportal/features/Account_Detail/account_detail._page.dart';
+import 'package:travelportal/features/account_detail_page/account_detail._page.dart';
 import 'package:travelportal/features/detailPage/detail_page.dart';
 import 'package:travelportal/features/landingPage/presentation/landing_page.dart';
 import 'package:travelportal/features/listingPage/listing_page.dart';
+import 'package:travelportal/features/room_detail_page/Room_Detail_page.dart';
+import 'package:travelportal/features/select_room_page/select_room_page.dart';
 import 'package:travelportal/features/signup_page/signup_page.dart';
 import 'package:travelportal/features/splashPage/splash_page.dart';
 
@@ -38,6 +40,12 @@ import '../../../features/setting_page/setting_page.dart';
     ),
     AutoRoute(
       page: AccountDetailPage,
+    ),
+    AutoRoute(
+      page: RoomDetailPage,
+    ),
+    AutoRoute(
+      page: SelectRoomPage,
     ),
     AutoRoute(page: DetailPage),
     AutoRoute(page: ListingPage),

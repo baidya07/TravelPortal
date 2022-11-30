@@ -26,6 +26,8 @@ class LandingPage extends StatelessWidget {
         selectedColor: const Color(0xff3731EB),
         onTabSelected: (_) {
           context.router.push(ProfileRoute());
+          context.router.push(RoomDetailRoute());
+          context.router.push(SelectRoomRoute());
         },
 
         //     model.onNavItemClick(context, index),
