@@ -11,129 +11,144 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i11;
-import 'package:flutter/material.dart' as _i12;
+import 'package:auto_route/auto_route.dart' as _i12;
+import 'package:flutter/material.dart' as _i13;
 
-import '../../../features/auth/logInPage/login_page.dart' as _i3;
-import '../../../features/bookings/booking_page.dart' as _i2;
-import '../../../features/detailPage/detail_page.dart' as _i8;
-import '../../../features/landingPage/presentation/landing_page.dart' as _i6;
-import '../../../features/listingPage/listing_page.dart' as _i9;
-import '../../../features/login_page/secondarylogin_page.dart' as _i4;
-import '../../../features/profile/profile_page.dart' as _i5;
-import '../../../features/saved/saved_page.dart' as _i7;
-import '../../../features/setting_page/setting_page.dart' as _i10;
+import '../../../features/auth/logInPage/login_page.dart' as _i5;
+import '../../../features/bookings/booking_page.dart' as _i4;
+import '../../../features/detailPage/detail_page.dart' as _i9;
+import '../../../features/home/home_page.dart' as _i2;
+import '../../../features/landingPage/presentation/landing_page.dart' as _i8;
+import '../../../features/listingPage/listing_page.dart' as _i10;
+import '../../../features/login_page/secondarylogin_page.dart' as _i6;
+import '../../../features/profile/profile_page.dart' as _i7;
+import '../../../features/saved/saved_page.dart' as _i3;
+import '../../../features/setting_page/setting_page.dart' as _i11;
 import '../../../features/splashPage/splash_page.dart' as _i1;
 
-class AppRouter extends _i11.RootStackRouter {
-  AppRouter([_i12.GlobalKey<_i12.NavigatorState>? navigatorKey])
+class AppRouter extends _i12.RootStackRouter {
+  AppRouter([_i13.GlobalKey<_i13.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i11.PageFactory> pagesMap = {
+  final Map<String, _i12.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i12.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.SplashPage(),
       );
     },
-    BookingRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+    HomeRoute.name: (routeData) {
+      return _i12.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i2.BookingPage(),
+        child: const _i2.HomePage(),
+      );
+    },
+    SavedRoute.name: (routeData) {
+      return _i12.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i3.SavedPage(),
+      );
+    },
+    BookingRoute.name: (routeData) {
+      return _i12.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i4.BookingPage(),
       );
     },
     LoginRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i12.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i3.LoginPage(),
+        child: const _i5.LoginPage(),
       );
     },
     SecondaryLoginRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i12.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.SecondaryLoginPage(),
+        child: const _i6.SecondaryLoginPage(),
       );
     },
     ProfileRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i12.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i5.ProfilePage(),
+        child: const _i7.ProfilePage(),
       );
     },
     LandingRoute.name: (routeData) {
       final args = routeData.argsAs<LandingRouteArgs>(
           orElse: () => const LandingRouteArgs());
-      return _i11.MaterialPageX<dynamic>(
+      return _i12.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i6.LandingPage(key: args.key),
-      );
-    },
-    SavedRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const _i7.SavedPage(),
+        child: _i8.LandingPage(key: args.key),
       );
     },
     DetailRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i12.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i8.DetailPage(),
+        child: const _i9.DetailPage(),
       );
     },
     ListingRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i12.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i9.ListingPage(),
+        child: const _i10.ListingPage(),
       );
     },
     SettingRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i12.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i10.SettingPage(),
+        child: const _i11.SettingPage(),
       );
     },
   };
 
   @override
-  List<_i11.RouteConfig> get routes => [
-        _i11.RouteConfig(
+  List<_i12.RouteConfig> get routes => [
+        _i12.RouteConfig(
           SplashRoute.name,
-          path: '/splash-page',
-        ),
-        _i11.RouteConfig(
-          BookingRoute.name,
           path: '/',
         ),
-        _i11.RouteConfig(
-          LoginRoute.name,
-          path: '/login-page',
+        _i12.RouteConfig(
+          HomeRoute.name,
+          path: '/home-page',
         ),
-        _i11.RouteConfig(
-          SecondaryLoginRoute.name,
-          path: '/secondary-login-page',
-        ),
-        _i11.RouteConfig(
-          ProfileRoute.name,
-          path: '/profile-page',
-        ),
-        _i11.RouteConfig(
-          LandingRoute.name,
-          path: '/landing-page',
-        ),
-        _i11.RouteConfig(
+        _i12.RouteConfig(
           SavedRoute.name,
           path: '/saved-page',
         ),
-        _i11.RouteConfig(
+        _i12.RouteConfig(
+          BookingRoute.name,
+          path: '/booking-page',
+        ),
+        _i12.RouteConfig(
+          LoginRoute.name,
+          path: '/login-page',
+        ),
+        _i12.RouteConfig(
+          SecondaryLoginRoute.name,
+          path: '/secondary-login-page',
+        ),
+        _i12.RouteConfig(
+          ProfileRoute.name,
+          path: '/profile-page',
+        ),
+        _i12.RouteConfig(
+          LandingRoute.name,
+          path: '/landing-page',
+        ),
+        _i12.RouteConfig(
+          SavedRoute.name,
+          path: '/saved-page',
+        ),
+        _i12.RouteConfig(
           DetailRoute.name,
           path: '/detail-page',
         ),
-        _i11.RouteConfig(
+        _i12.RouteConfig(
           ListingRoute.name,
           path: '/listing-page',
         ),
-        _i11.RouteConfig(
+        _i12.RouteConfig(
           SettingRoute.name,
           path: '/setting-page',
         ),
@@ -142,31 +157,55 @@ class AppRouter extends _i11.RootStackRouter {
 
 /// generated route for
 /// [_i1.SplashPage]
-class SplashRoute extends _i11.PageRouteInfo<void> {
+class SplashRoute extends _i12.PageRouteInfo<void> {
   const SplashRoute()
       : super(
           SplashRoute.name,
-          path: '/splash-page',
+          path: '/',
         );
 
   static const String name = 'SplashRoute';
 }
 
 /// generated route for
-/// [_i2.BookingPage]
-class BookingRoute extends _i11.PageRouteInfo<void> {
+/// [_i2.HomePage]
+class HomeRoute extends _i12.PageRouteInfo<void> {
+  const HomeRoute()
+      : super(
+          HomeRoute.name,
+          path: '/home-page',
+        );
+
+  static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [_i3.SavedPage]
+class SavedRoute extends _i12.PageRouteInfo<void> {
+  const SavedRoute()
+      : super(
+          SavedRoute.name,
+          path: '/saved-page',
+        );
+
+  static const String name = 'SavedRoute';
+}
+
+/// generated route for
+/// [_i4.BookingPage]
+class BookingRoute extends _i12.PageRouteInfo<void> {
   const BookingRoute()
       : super(
           BookingRoute.name,
-          path: '/',
+          path: '/booking-page',
         );
 
   static const String name = 'BookingRoute';
 }
 
 /// generated route for
-/// [_i3.LoginPage]
-class LoginRoute extends _i11.PageRouteInfo<void> {
+/// [_i5.LoginPage]
+class LoginRoute extends _i12.PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
@@ -177,8 +216,8 @@ class LoginRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.SecondaryLoginPage]
-class SecondaryLoginRoute extends _i11.PageRouteInfo<void> {
+/// [_i6.SecondaryLoginPage]
+class SecondaryLoginRoute extends _i12.PageRouteInfo<void> {
   const SecondaryLoginRoute()
       : super(
           SecondaryLoginRoute.name,
@@ -189,8 +228,8 @@ class SecondaryLoginRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.ProfilePage]
-class ProfileRoute extends _i11.PageRouteInfo<void> {
+/// [_i7.ProfilePage]
+class ProfileRoute extends _i12.PageRouteInfo<void> {
   const ProfileRoute()
       : super(
           ProfileRoute.name,
@@ -201,9 +240,9 @@ class ProfileRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.LandingPage]
-class LandingRoute extends _i11.PageRouteInfo<LandingRouteArgs> {
-  LandingRoute({_i12.Key? key})
+/// [_i8.LandingPage]
+class LandingRoute extends _i12.PageRouteInfo<LandingRouteArgs> {
+  LandingRoute({_i13.Key? key})
       : super(
           LandingRoute.name,
           path: '/landing-page',
@@ -216,7 +255,7 @@ class LandingRoute extends _i11.PageRouteInfo<LandingRouteArgs> {
 class LandingRouteArgs {
   const LandingRouteArgs({this.key});
 
-  final _i12.Key? key;
+  final _i13.Key? key;
 
   @override
   String toString() {
@@ -225,20 +264,8 @@ class LandingRouteArgs {
 }
 
 /// generated route for
-/// [_i7.SavedPage]
-class SavedRoute extends _i11.PageRouteInfo<void> {
-  const SavedRoute()
-      : super(
-          SavedRoute.name,
-          path: '/saved-page',
-        );
-
-  static const String name = 'SavedRoute';
-}
-
-/// generated route for
-/// [_i8.DetailPage]
-class DetailRoute extends _i11.PageRouteInfo<void> {
+/// [_i9.DetailPage]
+class DetailRoute extends _i12.PageRouteInfo<void> {
   const DetailRoute()
       : super(
           DetailRoute.name,
@@ -249,8 +276,8 @@ class DetailRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.ListingPage]
-class ListingRoute extends _i11.PageRouteInfo<void> {
+/// [_i10.ListingPage]
+class ListingRoute extends _i12.PageRouteInfo<void> {
   const ListingRoute()
       : super(
           ListingRoute.name,
@@ -261,8 +288,8 @@ class ListingRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i10.SettingPage]
-class SettingRoute extends _i11.PageRouteInfo<void> {
+/// [_i11.SettingPage]
+class SettingRoute extends _i12.PageRouteInfo<void> {
   const SettingRoute()
       : super(
           SettingRoute.name,

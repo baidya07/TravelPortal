@@ -21,6 +21,7 @@ class BookingPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: const Color(0xFFEDEDED),
         appBar: AppBar(
+          centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.black),
           title: Text('Booking Preferences',
               style: Theme.of(context)
