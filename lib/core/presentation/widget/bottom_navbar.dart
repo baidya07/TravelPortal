@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-
-
-
 class FABBottomAppBarItem {
-  FABBottomAppBarItem({required this.icon,required this.text});
+  FABBottomAppBarItem({required this.icon, required this.text});
   String icon;
   String text;
 }
 
 class FABBottomAppBar extends StatefulWidget {
-  FABBottomAppBar({Key? key,
+  FABBottomAppBar({
+    Key? key,
     this.items = const [],
     this.centerItemText,
     this.height = 62.0,
@@ -40,9 +38,8 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
   MediaQueryData? queryData;
   int _selectedIndex = 0;
 
- void _updateIndex(int index) {
-   if(widget.onTabSelected!=null)
-    widget.onTabSelected!(index);
+  void _updateIndex(int index) {
+    if (widget.onTabSelected != null) widget.onTabSelected!(index);
     setState(() {
       _selectedIndex = index;
     });
@@ -69,25 +66,30 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
   }
 
   Widget _buildTabItem({
-   required FABBottomAppBarItem item,
-   required int index,
-   required ValueChanged<int> onPressed,
+    required FABBottomAppBarItem item,
+    required int index,
+    required ValueChanged<int> onPressed,
   }) {
     final color = _selectedIndex == index ? widget.selectedColor : widget.color;
     return Expanded(
       child: Container(
-        color: _selectedIndex == index ? widget.selectedColor.withOpacity(0.1) : widget.color,
+        color: _selectedIndex == index
+            ? widget.selectedColor.withOpacity(0.1)
+            : widget.color,
         height: widget.height,
         child: Material(
           type: MaterialType.transparency,
-
           child: InkWell(
             onTap: () => onPressed(index),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SvgPicture.asset(item.icon, color: color,height: queryData!.size.height * 0.027,),
+                SvgPicture.asset(
+                  item.icon,
+                  color: color,
+                  height: queryData!.size.height * 0.027,
+                ),
                 // Image(
                 //   image: AssetImage(item.icon),
                 //   color: color,
@@ -102,7 +104,10 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
                 ),
                 Text(
                   item.text,
-                  style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600, color: Color(0xff626262)),
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff626262)),
                 ),
                 //  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               ],

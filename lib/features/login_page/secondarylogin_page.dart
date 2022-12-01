@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:travelportal/core/presentation/resources/ui_assets.dart';
 import 'package:travelportal/core/presentation/routes/router.gr.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
@@ -9,7 +8,8 @@ import '../../core/presentation/resources/size_constants.dart';
 import '../../core/presentation/widget/forms/textfields.dart';
 
 class SecondaryLoginPage extends StatelessWidget {
-  const SecondaryLoginPage({super.key});
+  // bool _obscureText = true;
+  // const SecondaryLoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class SecondaryLoginPage extends StatelessWidget {
                             },
                             child: const Padding(
                               padding: EdgeInsets.only(left: 20.0),
-                              child:  Icon(
+                              child: Icon(
                                 Icons.arrow_back_ios,
                                 color: Colors.black,
                               ),
@@ -62,16 +62,17 @@ class SecondaryLoginPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
+            padding:
+                const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
             child: Column(
               children: [
                 Stack(
                   children: [
                     const Positioned(
                       child: Padding(
-                        padding:  EdgeInsets.only(right: 300),
+                        padding: EdgeInsets.only(right: 300),
                         child: CircleAvatar(
-                          radius: 40,
+                          radius: 30,
                           backgroundImage: NetworkImage(
                             'https://thumbs.dreamstime.com/b/nice-to-talk-smart-person-indoor-shot-attractive-interesting-caucasian-guy-smiling-broadly-nice-to-112345489.jpg',
                           ),
@@ -79,13 +80,11 @@ class SecondaryLoginPage extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: 60,
-                      left: 50,
-                      width: 40,
-                      height: 20,
-                      child: SizedBox(
-                        width: 50,
-                        height: 60,
+                      top: 35,
+                      left: 40,
+                      child: Container(
+                        width: 20,
+                        height: 20,
                         child: CircleAvatar(
                           radius: 5,
                           child: Image(

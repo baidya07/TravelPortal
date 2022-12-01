@@ -1,10 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:travelportal/core/presentation/resources/colors.dart';
 import 'package:travelportal/core/presentation/routes/router.gr.dart';
-import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
-import 'package:travelportal/core/presentation/widget/circular_avatar.dart';
 
 import '../../core/presentation/resources/size_constants.dart';
 import '../../core/presentation/resources/ui_assets.dart';
@@ -112,7 +109,11 @@ class ProfilePage extends StatelessWidget {
               ),
               const Divider(),
               SBC.mH,
-              const _ProfileSettings(imageTitle: 'account.svg', title: 'Account Details',),
+              InkWell(
+                  onTap: (){
+                    context.router.push(const AccountDetailRoute());
+                  },
+                  child: const _ProfileSettings(imageTitle: 'account.svg', title: 'Account Details',)),
               SBC.xxLH,
               const _Heading(title: 'Features',),
               SBC.xxLH,

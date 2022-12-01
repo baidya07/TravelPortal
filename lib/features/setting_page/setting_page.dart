@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:travelportal/core/presentation/resources/ui_assets.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 
 import '../../core/presentation/resources/size_constants.dart';
@@ -16,80 +18,50 @@ class SettingPage extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
+          centerTitle: true,
+          title: Text(
+            'Settings',
+            style: Theme.of(context).textTheme.headline6,
+          ),
+          leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.arrow_back_ios),
+            color: Colors.black,
+          ),
           actions: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                            )),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          "Settings",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2!
-                              .copyWith(color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    const Icon(
-                      Icons.search_sharp,
-                      color: Colors.black,
-                    ),
-                  ],
-                ),
-              ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+              color: Colors.black,
             )
           ],
         ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            // ignore: prefer_const_literals_to_create_immutables
             children: [
-              SizedBox(
+              const SizedBox(
                 height: SC.lH,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: SC.lH),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: SC.lH),
                 child: Text(
                   'Account',
                 ),
               ),
-              _SubFeatures(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: SC.lH),
+              const _AccountFeatures(),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: SC.lH),
                 child: Text('Preferences'),
               ),
-              _perferencefeature(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: SC.lH),
+              const _perferencefeature(),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: SC.lH),
                 child: Text('Others'),
               ),
-              _othersfeature(),
-              SizedBox(
-                height: 250,
-              ),
-              Center(
-                child: PrimaryTextButton(
-                  title: 'Sign Out',
-                  color: Colors.black,
-                  onPressed: (() {}),
-                ),
-              )
+              const _othersfeature(),
+              const _Deletefeature(),
             ],
           ),
         ),
@@ -98,8 +70,8 @@ class SettingPage extends StatelessWidget {
   }
 }
 
-class _SubFeatures extends StatelessWidget {
-  const _SubFeatures({
+class _AccountFeatures extends StatelessWidget {
+  const _AccountFeatures({
     Key? key,
   }) : super(key: key);
 
@@ -123,8 +95,13 @@ class _SubFeatures extends StatelessWidget {
                 title: 'Security',
                 iconsImage: Icons.arrow_forward_ios,
               ),
-              Divider(),
-              _settingFeatures(
+              const Divider(),
+              const _settingFeatures(
+                title: 'Change Primary Email',
+                iconsImage: Icons.arrow_forward_ios,
+              ),
+              const Divider(),
+              const _settingFeatures(
                 title: 'Change Password',
                 iconsImage: Icons.arrow_forward_ios,
               ),
@@ -161,13 +138,13 @@ class _perferencefeature extends StatelessWidget {
                 title: 'Language',
                 iconsImage: Icons.arrow_forward_ios,
               ),
-              Divider(),
-              _settingFeatures(
+              const Divider(),
+              const _settingFeatures(
                 title: 'Region',
                 iconsImage: Icons.arrow_forward_ios,
               ),
-              Divider(),
-              _settingFeatures(
+              const Divider(),
+              const _settingFeatures(
                 title: 'Notification',
                 iconsImage: Icons.arrow_forward_ios,
               ),
@@ -204,10 +181,43 @@ class _othersfeature extends StatelessWidget {
                 title: 'Report a Problem',
                 iconsImage: Icons.arrow_forward_ios,
               ),
-              Divider(),
-              _settingFeatures(
+              const Divider(),
+              const _settingFeatures(
                 title: 'About',
                 iconsImage: Icons.arrow_forward_ios,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Deletefeature extends StatelessWidget {
+  const _Deletefeature({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
+      margin: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 0.1,
+        ),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Column(
+        children: [
+          Column(
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              const _settingFeatures(
+                title: 'Delete Account',
+                iconsImage: null,
               ),
             ],
           ),
@@ -232,7 +242,7 @@ class _settingFeatures extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(title),
-        Icon(Icons.arrow_forward_ios),
+        const Icon(Icons.arrow_forward_ios),
       ],
     );
   }

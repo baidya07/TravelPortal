@@ -3,8 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:auto_route/auto_route.dart';
 
 import '../../../core/presentation/resources/ui_assets.dart';
-
 import '../../../core/presentation/routes/router.gr.dart';
+
+
 
 class LandingPage extends StatelessWidget {
 
