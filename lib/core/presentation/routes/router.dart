@@ -8,6 +8,7 @@ import 'package:travelportal/features/listingPage/listing_page.dart';
 import 'package:travelportal/features/splashPage/splash_page.dart';
 
 import '../../../features/auth/logInPage/login_page.dart';
+import '../../../features/auth/signup_page/signup_page.dart';
 import '../../../features/bookings/booking_page.dart';
 import '../../../features/login_page/secondarylogin_page.dart';
 import '../../../features/rooms/room_Detail_page.dart';
@@ -17,7 +18,7 @@ import '../../../features/saved/saved_page.dart';
 
 import '../../../features/profile/profile_page.dart';
 import '../../../features/setting_page/setting_page.dart';
-import '../../../features/signup_page/signup_page.dart';
+
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',

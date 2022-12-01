@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travelportal/core/presentation/routes/router.gr.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 import 'package:travelportal/features/landingPage/presentation/landing_page.dart';
 
@@ -190,6 +191,21 @@ class DetailPage extends StatelessWidget {
                   ),
                   SBC.mH,
                   const BottomBanner(),
+                  SBC.mH,
+                  const Divider(),
+                  SBC.mH,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Rs. 129/night', style: Theme.of(context).textTheme.bodyText1,),
+                      PrimaryButton(
+                          onPressed: (){
+                            context.router.push(const SelectRoomRoute());
+                          }, title: 'BOOK A ROOM',
+                      width: 130,
+                      )
+                    ],
+                  )
                 ],
               ),
             ),

@@ -5,8 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 import 'package:travelportal/core/presentation/widget/forms/textfields.dart';
 
-import '../../core/presentation/resources/size_constants.dart';
-import '../../core/presentation/resources/ui_assets.dart';
+import '../../../core/presentation/resources/size_constants.dart';
+import '../../../core/presentation/resources/ui_assets.dart';
+
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});

@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:travelportal/core/presentation/routes/router.gr.dart';
 import 'package:travelportal/core/presentation/widget/cached_network_image_builder.dart';
 import 'package:travelportal/core/presentation/widget/forms/buttons.dart';
 
@@ -21,7 +23,9 @@ class SelectRoomPage extends StatelessWidget {
             style: Theme.of(context).textTheme.headline6,
           ),
           leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.router.pop();
+            },
             icon: const Icon(Icons.arrow_back_ios),
             color: Colors.black,
           ),
@@ -30,8 +34,13 @@ class SelectRoomPage extends StatelessWidget {
             itemCount: 3,
             itemBuilder: (context, position) {
               // ignore: prefer_const_constructors
-              return Card(
-                child: const SelectRoomList(),
+              return InkWell(
+                onTap: (){
+                  context.router.push(const RoomDetailRoute());
+                },
+                child: const Card(
+                  child: SelectRoomList(),
+                ),
               );
             }));
   }

@@ -123,7 +123,7 @@ class LoginPage extends StatelessWidget {
                     PrimaryTextButton(
                       title: 'Create Account',
                       onPressed: () {
-                        context.router.push(SignupRoute());
+                        context.router.push(const SignupRoute());
                       },
                     ),
                   ],

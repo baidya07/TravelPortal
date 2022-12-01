@@ -16,6 +16,7 @@ import 'package:flutter/material.dart' as _i17;
 
 import '../../../features/account_detail_page/account_detail._page.dart' as _i8;
 import '../../../features/auth/logInPage/login_page.dart' as _i2;
+import '../../../features/auth/signup_page/signup_page.dart' as _i7;
 import '../../../features/bookings/booking_page.dart' as _i14;
 import '../../../features/detailPage/detail_page.dart' as _i4;
 import '../../../features/home/home_page.dart' as _i12;
@@ -27,7 +28,6 @@ import '../../../features/rooms/room_Detail_page.dart' as _i9;
 import '../../../features/rooms/select_room_page.dart' as _i10;
 import '../../../features/saved/saved_page.dart' as _i13;
 import '../../../features/setting_page/setting_page.dart' as _i6;
-import '../../../features/signup_page/signup_page.dart' as _i7;
 import '../../../features/splashPage/splash_page.dart' as _i1;
 
 class AppRouter extends _i16.RootStackRouter {
